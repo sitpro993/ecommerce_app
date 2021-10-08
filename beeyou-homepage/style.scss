@@ -6,7 +6,7 @@
 
 html {
   height: 100vh;
-  width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
   display: grid;
 }
 
-header {
+.header-info {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -27,11 +27,15 @@ ul {
   margin: 0;
   padding: 0;
 }
-a {
-  color: #000;
-}
+
 a {
   text-decoration: none;
+  color: #000;
+}
+
+button {
+  background: none;
+  border: none;
 }
 
 // meta menu
@@ -104,3 +108,80 @@ a {
   column-count: 3;
   width: 300%;
 }
+
+.thumbnail {
+  img {
+    width: 100%;
+  }
+}
+
+// mobile menu
+.mobie-nav {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px;
+
+  .mobile-menu-btn,
+  .mobile-cart-btn {
+    color: #333;
+    padding: 25px 15px 15px 15px;
+    i {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 425px) and (max-device-width: 768px) and (orientation: landscape) {
+  .mobie-nav {
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
+
+  .header-info {
+    display: none;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 425px) and (orientation: landscape) {
+  .mobie-nav {
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
+
+  .header-info {
+    display: none;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 375px) and (orientation: landscape) {
+  .mobie-nav {
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
+
+  .header-info {
+    display: none;
+  }
+}
+
+@media only screen and (max-device-width: 320px) and (orientation: landscape) {
+  .mobie-nav {
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
+
+  .header-info {
+    display: none;
+  }
+}
+
+////////////////////////////////////////////////////////
