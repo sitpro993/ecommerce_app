@@ -62,33 +62,17 @@
           /></a>
         </div>
 
-        <div class="action-info">
-          <div class="input-group" style="display: inline-block">
-            <input
-              id="searchtext"
-              name="q"
-              id="s"
-              class=""
-              type="text"
-              placeholder="Tìm kiếm..."
-            />
-
-            <span class="input-group-btn">
-              <button type="submit" id="searchsubmit">
-                <i class="fas fa-search"></i>
-              </button>
-            </span>
-          </div>
-
-          <ul class="meta-menu" style="display: inline-block">
-            <li>
-              <a href="#"><i class="fas fa-shopping-cart"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="far fa-user"></i></a>
-            </li>
-          </ul>
-        </div>
+        <ul class="meta-menu" style="display: inline-block">
+          <li>
+            <a href="#"><i class="fas fa-search"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="far fa-user"></i></a>
+          </li>
+        </ul>
       </div>
 
       <section class="navbar">
@@ -485,8 +469,8 @@
       </section>
     </header>
 
-    <!-- <main class="main-content">
-      <section class="home-collection">
+    <main class="main-content">
+      <!-- <section class="home-collection">
         <div class="wapper">
           <div class="home-section-header">
             <h2>Bộ sưu tập</h2>
@@ -521,15 +505,89 @@
             </div>
           </div>
         </div>
+      </section> -->
+
+      <section class="home-policy">
+        <div class="wrapper">
+          <div class="policy-grid">
+            <div class="policy-item">
+              <div class="policy-icon">
+                <img
+                  src="//theme.hstatic.net/1000281383/1000535724/14/policy_icon_1.png?v=242"
+                  alt="GIAO HÀNG TOÀN QUỐC"
+                />
+              </div>
+              <div class="policy-title">GIAO HÀNG TOÀN QUỐC</div>
+              <div class="policy-desc">
+                Có hình thức Giao hàng khi thanh toán (COD)
+              </div>
+            </div>
+
+            <div class="policy-item">
+              <div class="policy-icon">
+                <img
+                  src="//theme.hstatic.net/1000281383/1000535724/14/policy_icon_2.png?v=242"
+                  alt="CHẤT LƯỢNG ĐẢM BẢO"
+                />
+              </div>
+              <div class="policy-title">CHẤT LƯỢNG ĐẢM BẢO</div>
+              <div class="policy-desc">
+                Chất liệu cao cấp, mực in thân thiện môi trường
+              </div>
+            </div>
+
+            <div class="policy-item">
+              <div class="policy-icon">
+                <img
+                  src="//theme.hstatic.net/1000281383/1000535724/14/policy_icon_3.png?v=242"
+                  alt="ĐỔI TRẢ DỄ DÀNG"
+                />
+              </div>
+              <div class="policy-title">ĐỔI TRẢ DỄ DÀNG</div>
+              <div class="policy-desc">Trả lại hàng nếu không ưng ý</div>
+            </div>
+          </div>
+        </div>
       </section>
-    </main> -->
+
+      <section class="home-banner">
+        <div class="wrapper">
+          <div class="banner-grid">
+            <div class="banner-item">
+              <a target="_blank" href="/collections/all">
+                <img
+                  src="//theme.hstatic.net/1000281383/1000535724/14/banner_img_1.png?v=242"
+                  alt="BeeYou - Thời trang Chất"
+                />
+              </a>
+            </div>
+            <div class="banner-item">
+              <a target="_blank" href="/collections/all">
+                <img
+                  src="//theme.hstatic.net/1000281383/1000535724/14/banner_img_3.png?v=242"
+                  alt="BeeYou - Thời trang Chất"
+                />
+              </a>
+            </div>
+            <div class="banner-item">
+              <a target="_blank" href="/collections/all">
+                <img
+                  src="//theme.hstatic.net/1000281383/1000535724/14/banner_img_2.png?v=242"
+                  alt="BeeYou - Thời trang Chất"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer>
       <div class="foot-content">
         <div class="ft-bg-overlay"></div>
         <div class="wrapper">
-          <div class="grid">
-            <div class="grid__item">
+          <div class="footer-grid">
+            <div class="footer-grid-item">
               <ul>
                 <h3>Hỗ Trợ Khách Hàng</h3>
 
@@ -554,7 +612,7 @@
                 </li>
               </ul>
             </div>
-            <div class="grid__item">
+            <div class="footer-grid-item">
               <ul class="footer-contact no-bullets">
                 <h3>THÔNG TIN LIÊN HỆ</h3>
                 <div class="footer-address">
@@ -571,7 +629,7 @@
                 </div>
               </ul>
             </div>
-            <div class="grid__item">
+            <div class="footer-grid-item">
               <div class="footer-subscribe">
                 <h3>ĐĂNG KÝ NHẬN TIN</h3>
                 <p>Tin khuyến mãi / Tin thương hiệu</p>
@@ -581,7 +639,7 @@
                   class="contact-form"
                   method="post"
                 >
-                  <div class="input-group">
+                  <div class="input-group subscribe-form">
                     <input type="email" placeholder="Nhập email của bạn" />
                     <button type="submit">
                       <i class="fa fa-paper-plane"></i>
@@ -590,7 +648,7 @@
                 </form>
               </div>
             </div>
-            <div class="grid__item">
+            <div class="footer-grid-item">
               <ul class="footer-social">
                 <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
                 <p>Mạng xã hội</p>
@@ -608,7 +666,7 @@
                 </div>
               </ul>
             </div>
-            <div class="grid__item">
+            <div class="footer-grid-item">
               <ul class="footer-certification no-bullets">
                 <h3>CHỨNG NHẬN</h3>
 

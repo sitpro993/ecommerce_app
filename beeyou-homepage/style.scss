@@ -15,8 +15,9 @@ body {
 
 .header-info {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  margin: 0 30px;
 }
 
 /*  */
@@ -43,6 +44,27 @@ a {
 button {
   background: none;
   border: none;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+
+  input {
+    flex-grow: 1;
+    vertical-align: middle;
+    padding: 0 15px;
+  }
+  button {
+    font-size: 2.4rem;
+    padding: 0 12px;
+
+    i {
+      transform: translateY(-50%);
+    }
+  }
 }
 
 // meta menu
@@ -174,6 +196,71 @@ button {
   }
 }
 
+//home policy
+
+.home-policy {
+  padding-bottom: 30px;
+
+  .policy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px 30px;
+
+    .policy-item {
+      padding: 10px;
+      border: double 4px #f4f4f4;
+      text-align: center;
+
+      &:hover {
+        border-color: #222;
+      }
+
+      .policy-icon {
+        margin-bottom: 5px;
+      }
+      .policy-title {
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      .policy-desc {
+        color: #333;
+      }
+    }
+  }
+}
+
+// home banner
+
+.home-banner {
+  padding-bottom: 30px;
+  .banner-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "img1 img3 img2";
+    gap: 30px;
+    .banner-item {
+      a {
+        img {
+          width: 100%;
+          transform: scale(1);
+        }
+      }
+      &:nth-child(1) {
+        grid-area: img1;
+      }
+
+      &:nth-child(2) {
+        grid-area: img2;
+      }
+
+      &:nth-child(3) {
+        grid-area: img3;
+      }
+    }
+  }
+}
+
 // footer
 
 footer {
@@ -195,7 +282,7 @@ footer {
       background: rgba(0, 0, 0, 0.6);
     }
 
-    .grid {
+    .footer-grid {
       position: relative;
       z-index: 2;
       display: grid;
@@ -206,7 +293,7 @@ footer {
   }
 }
 
-.grid__item {
+.footer-grid-item {
   h3 {
     color: #fff;
     text-transform: uppercase;
@@ -252,30 +339,17 @@ footer {
       margin: 0 0 15px 0;
     }
 
-    .input-group {
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      margin: 0 auto;
-
+    .subscribe-form {
       input {
-        flex-grow: 1;
         color: #333;
-        vertical-align: middle;
-        padding: 0 15px;
       }
       button {
         color: #fff;
-        font-size: 2.4rem;
+
         background-color: #333;
-        padding: 0 12px;
 
         &:hover {
           background-color: #222;
-        }
-        i {
-          transform: translateY(-50%);
         }
       }
     }
@@ -336,9 +410,25 @@ footer {
   .header-info {
     display: none;
   }
+
+  .home-policy {
+    .policy-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+    }
+  }
+
+  .home-banner {
+    .banner-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas: "img1 img2" "img3 img3";
+    }
+  }
+
   footer {
     .foot-content {
-      .grid {
+      .footer-grid {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
       }
@@ -346,7 +436,7 @@ footer {
   }
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 424px) and (orientation: landscape) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 425px) and (orientation: landscape) {
   .mobie-nav {
     display: flex;
   }
@@ -358,9 +448,24 @@ footer {
     display: none;
   }
 
+  .home-policy {
+    .policy-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+    }
+  }
+
+  .home-banner {
+    .banner-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-areas: "img1" "img2" "img3";
+    }
+  }
+
   footer {
     .foot-content {
-      .grid {
+      .footer-grid {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
       }
@@ -381,16 +486,6 @@ footer {
 
   .header-info {
     display: none;
-  }
-
-  footer {
-    .foot-content {
-      .grid {
-        .grid__item {
-          width: 100%;
-        }
-      }
-    }
   }
 }
 
