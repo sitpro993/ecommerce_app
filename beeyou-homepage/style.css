@@ -271,30 +271,40 @@ footer .foot-content .grid {
 
 .grid__item .footer-subscribe .input-group {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .grid__item .footer-subscribe .input-group input {
-  border: 0px;
-  outline: 0px;
-  height: 40px;
-  line-height: 40px;
-  padding: 0px 15px;
-  color: #333333;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  color: #333;
+  vertical-align: middle;
+  padding: 0 15px;
 }
 
-.grid__item .footer-subscribe .input-group .input-group-btn {
-  background-color: #333;
-  padding: 10.5px;
-  position: absolute;
-  right: 1%;
-}
-
-.grid__item .footer-subscribe .input-group .input-group-btn i {
+.grid__item .footer-subscribe .input-group button {
   color: #fff;
+  font-size: 2.4rem;
+  background-color: #333;
+  padding: 0 12px;
 }
 
-.grid__item .footer-subscribe .input-group .input-group-btn:hover {
+.grid__item .footer-subscribe .input-group button:hover {
   background-color: #222;
+}
+
+.grid__item .footer-subscribe .input-group button i {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .grid__item .footer-social .ft-social-network a {
@@ -359,7 +369,7 @@ footer .foot-content .grid {
   }
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 425px) and (orientation: landscape) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 424px) and (orientation: landscape) {
   .mobie-nav {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -376,6 +386,26 @@ footer .foot-content .grid {
         grid-template-columns: 1fr;
     -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 375px) and (orientation: landscape) {
+  a {
+    color: red;
+  }
+  .mobie-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
+  .header-info {
+    display: none;
+  }
+  footer .foot-content .grid .grid__item {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=style.css.map */

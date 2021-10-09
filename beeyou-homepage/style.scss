@@ -254,26 +254,28 @@ footer {
 
     .input-group {
       position: relative;
-      input {
-        border: 0px;
-        outline: 0px;
-        height: 40px;
-        line-height: 40px;
-        padding: 0px 15px;
-        color: #333333;
-      }
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      margin: 0 auto;
 
-      .input-group-btn {
+      input {
+        flex-grow: 1;
+        color: #333;
+        vertical-align: middle;
+        padding: 0 15px;
+      }
+      button {
+        color: #fff;
+        font-size: 2.4rem;
         background-color: #333;
-        padding: 10.5px;
-        position: absolute;
-        right: 1%;
-        i {
-          color: #fff;
-        }
+        padding: 0 12px;
 
         &:hover {
           background-color: #222;
+        }
+        i {
+          transform: translateY(-50%);
         }
       }
     }
@@ -344,7 +346,7 @@ footer {
   }
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 425px) and (orientation: landscape) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 424px) and (orientation: landscape) {
   .mobie-nav {
     display: flex;
   }
@@ -366,31 +368,31 @@ footer {
   }
 }
 
-// @media only screen and (min-device-width: 320px) and (max-device-width: 375px) and (orientation: landscape) {
-//   a {
-//     color: red;
-//   }
-//   .mobie-nav {
-//     display: flex;
-//   }
-//   .navbar {
-//     display: none;
-//   }
+@media only screen and (min-device-width: 320px) and (max-device-width: 375px) and (orientation: landscape) {
+  a {
+    color: red;
+  }
+  .mobie-nav {
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
 
-//   .header-info {
-//     display: none;
-//   }
+  .header-info {
+    display: none;
+  }
 
-//   footer {
-//     .foot-content {
-//       .grid {
-//         .grid__item {
-//           width: 100%;
-//         }
-//       }
-//     }
-//   }
-// }
+  footer {
+    .foot-content {
+      .grid {
+        .grid__item {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
 
 // @media only screen and (max-device-width: 320px) and (orientation: landscape) {
 //   .mobie-nav {
