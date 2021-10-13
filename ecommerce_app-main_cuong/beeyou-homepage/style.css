@@ -508,4 +508,9 @@ footer .foot-content .footer-grid {
     display: none;
   }
 }
+/* Quy định bảo hành, chấm đầu câu */
+ul.circle {
+  list-style-type: circle;
+}   
+
 /*# sourceMappingURL=style.css.map */
