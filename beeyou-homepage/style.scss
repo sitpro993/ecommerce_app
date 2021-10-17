@@ -242,8 +242,14 @@ button {
     .banner-item {
       a {
         img {
-          width: 100%;
-          transform: scale(1);
+          max-width: 100%;
+        }
+      }
+
+      &:hover {
+        a {
+          img {
+          }
         }
       }
       &:nth-child(1) {

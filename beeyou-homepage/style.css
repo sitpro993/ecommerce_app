@@ -272,9 +272,7 @@ button {
 }
 
 .home-banner .banner-grid .banner-item a img {
-  width: 100%;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  max-width: 100%;
 }
 
 .home-banner .banner-grid .banner-item:nth-child(1) {
