@@ -1,0 +1,5 @@
+https://cloud.mongodb.com/
+email : laptrinhwebIT4552@gmail.com
+pass: 12345web
+import data : npm run data:import
+try get data: http://localhost:5000/api/products
