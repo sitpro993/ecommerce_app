@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Ốp lưng Animal 103",
+    "slug": "op-lung-animal-103",
+    "price": 120000,
+    "description": "Ốp lưng đẹp vl",
+    "variant": [
+      {
+        "title": "Ốp lưng XS Max",
+        "img": "link ảnh"
+      },
+      {
+        "title": "Ốp lưng iphone 7",
+        "img": "link ảnh"
+      }
+    ],
+    "size": ["X", "XL", "L", "S"],
+    "category": ["BeeCase", "Ốp lưng animal", "Ốp lưng con trai"],
+    "checked": true,
+    "sold": 10
+  },
+  {
+    "title": "Ốp lưng Animal 103",
+    "slug": "op-lung-animal-103",
+    "price": 120000,
+    "description": "Ốp lưng đẹp vl",
+    "variant": [
+      {
+        "title": "Ốp lưng XS Max",
+        "img": "link ảnh"
+      },
+      {
+        "title": "Ốp lưng iphone 7",
+        "img": "link ảnh"
+      }
+    ],
+    "size": ["X", "XL", "L", "S"],
+    "category": ["BeeCase", "Ốp lưng animal", "Ốp lưng con trai"],
+    "checked": true,
+    "sold": 10
+  }
+]
