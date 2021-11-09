@@ -2,6 +2,13 @@
   "name": "beeyou",
   "version": "0.1.0",
   "private": true,
+  "configurations": [
+    {
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "type": "dart"
+    }
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

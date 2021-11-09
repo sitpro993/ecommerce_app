@@ -61,7 +61,6 @@ export default function SigninPage() {
     localStorage.setItem("firstLogin", true);
   };
 
-  console.log(process.env.REFRESH_TOKEN_SECRET);
   useEffect(() => {
     if (Object.keys(auth).length !== 0) router.push("/");
   }, [auth, router]);

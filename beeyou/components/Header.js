@@ -72,9 +72,11 @@ function Header(props) {
             </a>
           </li>
           <li>
-            <a href="#">
-              <i className="far fa-user"></i>
-            </a>
+            <Link href="/account/signin">
+              <a>
+                <i className="far fa-user"></i>
+              </a>
+            </Link>
           </li>
         </ul>
       </div>

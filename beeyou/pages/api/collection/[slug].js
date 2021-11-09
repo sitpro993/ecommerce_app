@@ -1,23 +1,25 @@
 /* eslint-disable import/no-anonymous-default-export */
 import connectDB from "../../../utils/connectDB";
-import Products from "../../../models/productModel";
+import Categories from "../../../models/categoryModel";
+import product from "../../../models/productModel";
 
 connectDB();
 
 export default async (req, res) => {
   switch (req.method) {
     case "GET":
-      await getProducts(req, res);
+      await getCollection(req, res);
       break;
   }
 };
 
-const getProducts = async (req, res) => {
+const getCollection = async (req, res) => {
   try {
-    const products = await Products.find({});
-
+    const category = await Categories.findOne({
+      slug: req.query.slug,
+    }).populate("product");
     res.json({
-      products,
+      category,
     });
   } catch (err) {
     return res.status(500).json({ err: err.message });

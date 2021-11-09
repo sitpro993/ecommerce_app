@@ -6,7 +6,9 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      unique: true,
     },
+    slug: { type: String, required: true },
     price: {
       type: Number,
       required: true,
@@ -16,31 +18,25 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    content: {
-      type: String,
-      required: true,
-    },
-    images: {
+    variant: {
       type: Array,
       required: true,
     },
+    size: { type: Array },
     category: {
-      type: String,
+      type: Array,
       required: true,
     },
     checked: {
       type: Boolean,
       default: false,
     },
-    inStock: {
-      type: Number,
-      default: 0,
-    },
     sold: {
       type: Number,
       default: 0,
     },
   },
+
   { timestamps: true }
 );
 

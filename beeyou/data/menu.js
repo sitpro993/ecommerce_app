@@ -9,7 +9,7 @@ export const menu = {
       menuTab: [
         {
           content: "Dành cho nam",
-          link: "/collections/danh-cho-nam",
+          link: "/collections/op-lung-nam",
           menuTab: [
             {
               content: "Ốp Lưng Animal",
@@ -440,40 +440,39 @@ const product = [
   },
 ];
 
-// [
-//   {
-//     title: {
-//       type: String,
-//       required: true,
-//       trim: true,
-//       unique: true,
-//     },
-//     slug: { type: String, required: true },
-//     price: {
-//       type: Number,
-//       required: true,
-//       trim: true,
-//     },
-//     description: {
-//       type: String,
-//       required: true,
-//     },
-//     variant: {
-//       type: Array,
-//       required: true,
-//     },
-//     size: { type: Array },
-//     category: {
-//       type: Array,
-//       required: true,
-//     },
-//     checked: {
-//       type: Boolean,
-//       default: false,
-//     },
-//     sold: {
-//       type: Number,
-//       default: 0,
-//     },
+// {
+//     "title": "Ốp lưng samurai",
+//     "slug": "op-lung-samurai",
+//     "product": []
 //   },
-// ];
+
+//   {
+//     "title": "Ốp lưng thuglife",
+//     "slug": "op-lung-thuglife",
+//     "product": []
+//   },
+//   {
+//     "title": "Ốp lưng space",
+//     "slug": "op-lung-space",
+//     "product": []
+//   },
+//   {
+//     "title": "Ốp lưng đội bóng",
+//     "slug": "op-lung-doi-bong",
+//     "product": []
+//   },
+//   {
+//     "title": "Ốp lưng cầu thủ",
+//     "slug": "op-lung-cau-thu",
+//     "product": []
+//   },
+//   {
+//     "title": "Ốp lưng japan",
+//     "slug": "op-lung-japan",
+//     "product": []
+//   },
+//   {
+//     "title": "Ốp lưng camo",
+//     "slug": "op-lung-camo",
+//     "product": []
+//   }

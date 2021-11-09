@@ -5,8 +5,53 @@ import Panel from "./Panel";
 import Link from "next/link";
 
 function HomeFeaturedProducts(props) {
-  const img1 = "/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png";
-  const img2 = "/images/_mg_1268-1_ce1143f3626545a1a4e54d716967ea58_large.png";
+  const product1 = {
+    _id: {
+      $oid: "61895e928b3104b83c9e47bc",
+    },
+    title: "Túi hoa",
+    slug: "op-lung-animal-103",
+    price: 120000,
+    description: "Ốp lưng dẻo, tráng gương, uv in siêu sắc nét",
+    variant: [
+      {
+        title: "iphone XS Max",
+        img: "link ảnh",
+      },
+      {
+        title: " iphone 7",
+        img: "link ảnh",
+      },
+    ],
+    size: ["X", "XL", "L", "S"],
+    category: ["BeeCase", "Ốp lưng animal", "Ốp lưng nam"],
+    checked: true,
+    sold: 10,
+  };
+  const product2 = {
+    _id: {
+      $oid: "61895e928b3104b83c9e47bc",
+    },
+    title: "Ốp lưng Animal 103",
+    slug: "op-lung-animal-103",
+    price: 120000,
+    description: "Ốp lưng dẻo, tráng gương, uv in siêu sắc nét",
+    variant: [
+      {
+        title: "iphone XS Max",
+        img: "link ảnh",
+      },
+      {
+        title: " iphone 7",
+        img: "link ảnh",
+      },
+    ],
+    size: ["X", "XL", "L", "S"],
+    category: ["BeeCase", "Ốp lưng animal", "Ốp lưng nam"],
+    checked: true,
+    sold: 10,
+  };
+
   return (
     <section className="home-featured">
       <div className="wrapper">
@@ -17,28 +62,28 @@ function HomeFeaturedProducts(props) {
           <Panel title="Sản phẩm nổi bật">
             <div className="home-featured-products">
               <div>
-                <Product img={img1}></Product>
+                <Product product={product1}></Product>
               </div>
               <div>
-                <Product img={img1}></Product>
+                <Product product={product1}></Product>
               </div>
               <div>
-                <Product img={img1}></Product>
+                <Product product={product1}></Product>
               </div>
               <div>
-                <Product img={img1}></Product>
+                <Product product={product1}></Product>
               </div>
               <div>
-                <Product img={img1}></Product>
+                <Product product={product1}></Product>
               </div>
               <div>
-                <Product img={img1}></Product>
+                <Product product={product1}></Product>
               </div>
               <div>
-                <Product img={img1}></Product>
+                <Product product={product1}></Product>
               </div>
               <div>
-                <Product img={img1}></Product>
+                <Product product={product1}></Product>
               </div>
             </div>
             <Link href="/collections/hot-products">
@@ -48,28 +93,28 @@ function HomeFeaturedProducts(props) {
           <Panel title="Sản phẩm giá nóng">
             <div className="home-featured-products">
               <div>
-                <Product img={img2}></Product>
+                <Product product={product2}></Product>
               </div>
               <div>
-                <Product img={img2}></Product>
+                <Product product={product2}></Product>
               </div>
               <div>
-                <Product img={img2}></Product>
+                <Product product={product2}></Product>
               </div>
               <div>
-                <Product img={img2}></Product>
+                <Product product={product2}></Product>
               </div>
               <div>
-                <Product img={img2}></Product>
+                <Product product={product2}></Product>
               </div>
               <div>
-                <Product img={img2}></Product>
+                <Product product={product2}></Product>
               </div>
               <div>
-                <Product img={img2}></Product>
+                <Product product={product2}></Product>
               </div>
               <div>
-                <Product img={img2}></Product>
+                <Product product={product2}></Product>
               </div>
             </div>
             <Link href="/collections/onsale">
