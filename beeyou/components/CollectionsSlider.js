@@ -40,8 +40,6 @@ export default function CollectionsSlider() {
     { file: "/images/beecarry_large.png", link: "/images/beecarry" },
   ];
 
-  console.log(windowWidth);
-
   return (
     <Swiper
       spaceBetween={0}

@@ -3,10 +3,10 @@ import Link from "next/link";
 import { menu } from "../data/menu.js";
 function Mainmenu(props) {
   return (
-    <section className="navbar">
-      <ul className="site-nav">
+    <section className="nav-bar">
+      <ul className="nav-menu">
         {menu.menu.map((tab, index) => (
-          <li key={index} className="dropdown-menu">
+          <li key={index} className="dropdown_menu">
             <Link href={tab.link}>
               <a>
                 {tab.content}
@@ -18,7 +18,7 @@ function Mainmenu(props) {
             {tab.menuTab ? (
               <ul>
                 {tab.menuTab.map((menuTab, index) => (
-                  <li key={index} className="dropdown-menu dropdown-menu--lv2">
+                  <li key={index} className="dropdown_menu dropdown-menu-lv2">
                     <Link href={menuTab.link}>
                       <a>
                         {menuTab.content}
@@ -31,7 +31,7 @@ function Mainmenu(props) {
                       </a>
                     </Link>
                     {menuTab.menuTab ? (
-                      <ul className="col-3">
+                      <ul className="menu-right">
                         {menuTab.menuTab.map((t, index) => (
                           <li key={index}>
                             <Link href={t.link}>

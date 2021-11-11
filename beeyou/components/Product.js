@@ -27,18 +27,10 @@ function Product(props) {
               <i className="fa fa-eye" aria-hidden="true"></i>
             </a>
           </Link>
-          <button
-            type="button"
-            className="btn-controls btnBuyNow"
-            // data-handle="/products/tui-totebag-xuongrong"
-          >
+          <button type="button" className="btn-controls btnBuyNow">
             Mua Ngay
           </button>
-          <button
-            type="button"
-            className="btn-controls btnAddToCart"
-            // data-id="1044064210"
-          >
+          <button type="button" className="btn-controls btnAddToCart">
             <i className="fa fa-cart-plus" aria-hidden="true"></i>
           </button>
         </div>

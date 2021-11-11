@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import "../styles/globals.scss";
+import "bootstrap/dist/css/bootstrap.css";
 import "swiper/scss";
 import { DataProvider } from "../store/GlobalState";
 
