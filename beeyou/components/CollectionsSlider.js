@@ -1,29 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
-
-// install Swiper modules
-SwiperCore.use([Navigation]);
-import "swiper/css/navigation";
+import Slider from "react-slick";
+import { Container } from "react-bootstrap";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function CollectionsSlider() {
-  const [windowWidth, setWindowWidth] = useState();
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
+  const settings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 3,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   const imgs = [
     {
       file: "/images/beecase_6ae43e6632cb4ce18d0972c782f7edd5_large.png",
@@ -41,28 +56,31 @@ export default function CollectionsSlider() {
   ];
 
   return (
-    <Swiper
-      spaceBetween={0}
-      slidesPerView={windowWidth > 768 ? 4 : 3}
-      loop={windowWidth > 768 ? false : true}
-      navigation={windowWidth > 768 ? false : true}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      {imgs.map((img, index) => (
-        <SwiperSlide key={index}>
-          <Link href={img.link}>
-            <a>
-              <Image
-                width={300}
-                height={300}
-                layout="intrinsic"
-                src={img.file}
-                alt="Túi Totebag Xuongrong"
-              ></Image>
-            </a>
-          </Link>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <section className="home-collection paddingTop30">
+      <div className="wrapper">
+        <div className="home-section-header">
+          <h2>Bộ sưu tập</h2>
+        </div>
+        <div className="home-collection-thumbnail">
+          <Container>
+            <Slider {...settings}>
+              {imgs.map((img, index) => (
+                <Link key={index} href={img.link}>
+                  <a>
+                    <Image
+                      width={300}
+                      height={300}
+                      layout="intrinsic"
+                      src={img.file}
+                      alt="Túi Totebag Xuongrong"
+                    ></Image>
+                  </a>
+                </Link>
+              ))}
+            </Slider>
+          </Container>
+        </div>
+      </div>
+    </section>
   );
 }

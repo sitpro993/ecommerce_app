@@ -1,16 +1,30 @@
-import React from "react";
 import { useContext } from "react";
 import { DataContext } from "../store/GlobalState";
 import Loading from "./Loading";
+import Toast from "./Toast";
 
-export default function Notify() {
-  const [state, dispatch] = useContext(DataContext);
+const Notify = () => {
+  const { state, dispatch } = useContext(DataContext);
   const { notify } = state;
+
   return (
-    <div>
+    <>
       {notify.loading && <Loading />}
-      {notify.error && <p>{}</p>}
-      {notify.success && <p>{}</p>}
-    </div>
+      {notify.err && (
+        <Toast
+          msg={{ msg: notify.err, title: "error" }}
+          handleShow={() => dispatch({ type: "NOTIFY", payload: {} })}
+        />
+      )}
+
+      {notify.success && (
+        <Toast
+          msg={{ msg: notify.success, title: "success" }}
+          handleShow={() => dispatch({ type: "NOTIFY", payload: {} })}
+        />
+      )}
+    </>
   );
-}
+};
+
+export default Notify;

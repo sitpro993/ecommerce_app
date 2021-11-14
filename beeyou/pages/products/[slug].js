@@ -4,6 +4,7 @@ import Head from "next/head";
 import { getData } from "../../utils/fecthData";
 import Colors from "../../components/Colors";
 import DetailsThumb from "../../components/DetailsThumb";
+import ParallaxScrolling from "../../components/ParallaxScrolling";
 
 export const getServerSideProps = async ({ params: { slug } }) => {
   const res = await getData(`product/${slug}`);
@@ -30,6 +31,7 @@ export default function ProductDetail({ product }) {
         <title>{product.title + " - BeeYou"}</title>
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
+      <ParallaxScrolling></ParallaxScrolling>
       <div className="app">
         <div className="details">
           <div className="big-img">

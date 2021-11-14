@@ -1,6 +1,6 @@
-import ACTIONS from "./Actions";
+import { ACTIONS } from "./Actions";
 
-const reducer = (state, action) => {
+const reducers = (state, action) => {
   switch (action.type) {
     case ACTIONS.NOTIFY:
       return {
@@ -12,9 +12,19 @@ const reducer = (state, action) => {
         ...state,
         auth: action.payload,
       };
+    case ACTIONS.ADD_CART:
+      return {
+        ...state,
+        cart: action.payload,
+      };
+    case ACTIONS.ADD_MODAL:
+      return {
+        ...state,
+        modal: action.payload,
+      };
     default:
       return state;
   }
 };
 
-export default reducer;
+export default reducers;

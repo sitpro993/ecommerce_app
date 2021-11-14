@@ -1,0 +1,23 @@
+.cart-note {
+    label {
+        cursor: pointer;
+        margin: 0;
+    }
+
+    textarea {
+        width: 100%;
+    }
+}
+
+.total-price {
+    text-align: right;
+    p {
+        span {
+            &:last-child {
+                margin-left: 10px;
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import ParallaxScrolling from "../../components/ParallaxScrolling";
 
 export default function PolicyPage(props) {
   return (
@@ -8,6 +9,7 @@ export default function PolicyPage(props) {
         <title>Chính Sách Bảo Mật - BeeYou</title>
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
+      <ParallaxScrolling></ParallaxScrolling>
       <div>
         <h1>Chính sách bảo mật</h1>
       </div>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getData } from "../../utils/fecthData";
 import ProductList from "../../components/ProductList";
 import { Accordion, Col, Form, Row } from "react-bootstrap";
+import ParallaxScrolling from "../../components/ParallaxScrolling";
 
 function CollectionPage(props) {
   return props.collection ? (
@@ -12,6 +13,7 @@ function CollectionPage(props) {
         <title>{props.collection.title + " - BeeYou"}</title>
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
+      <ParallaxScrolling></ParallaxScrolling>
       <section className="paddingTop30">
         <div className="wrapper">
           <Row>

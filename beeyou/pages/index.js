@@ -13,27 +13,15 @@ export default function HomePage(props) {
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
       <>
-        <section className="thumbnail" style={{ display: "block" }}>
+        <section className="thumbnail" style={{ width: "100%" }}>
           <Image
-            width={1400}
-            height={500}
-            layout="responsive"
+            width={1600}
+            height={628}
             src="/images/slideshow_1.png"
             alt="BeeYou Collection"
           />
         </section>
-
-        <section className="home-collection paddingTop30">
-          <div className="wrapper">
-            <div className="home-section-header">
-              <h2>Bộ sưu tập</h2>
-            </div>
-            <div className="home-collection-thumbnail">
-              <CollectionsSlider></CollectionsSlider>
-            </div>
-          </div>
-        </section>
-
+        <CollectionsSlider></CollectionsSlider>
         <section className="home-policy paddingTop30">
           <div className="wrapper">
             <Row md={3} xs={1}>

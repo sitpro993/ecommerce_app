@@ -1,12 +1,13 @@
 import { createContext, useEffect, useReducer } from "react";
-import reducer from "./Reducers";
+import reducers from "./Reducers";
 import { getData } from "../utils/fecthData";
 
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const initialState = { notify: {}, auth: {} };
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const initialState = { notify: {}, auth: {}, cart: [], modal: [] };
+  const [state, dispatch] = useReducer(reducers, initialState);
+  const { cart, auth } = state;
 
   useEffect(() => {
     const firstLogin = localStorage.getItem("firstLogin");
@@ -24,8 +25,23 @@ export const DataProvider = ({ children }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const __next__cart__beeyou = JSON.parse(
+      localStorage.getItem("__next__cart__beeyou")
+    );
+
+    if (__next__cart__beeyou)
+      dispatch({ type: "ADD_CART", payload: __next__cart__beeyou });
+  }, []);
+
+  useEffect(() => {
+    if (cart.length > 0) {
+      localStorage.setItem("__next__cart__beeyou", JSON.stringify(cart));
+    }
+  }, [cart]);
+
   return (
-    <DataContext.Provider value={[state, dispatch]}>
+    <DataContext.Provider value={{ state, dispatch }}>
       {children}
     </DataContext.Provider>
   );

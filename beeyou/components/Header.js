@@ -1,84 +1,131 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Mainmenu from "./Mainmenu";
+import { DataContext } from "../store/GlobalState";
+import Cookie from "js-cookie";
+import { Dropdown, Form, Button } from "react-bootstrap";
 
-function Header(props) {
+function Header() {
+  const { state, dispatch } = useContext(DataContext);
+  const { auth, cart } = state;
+
+  const handleLogout = () => {
+    Cookie.remove("refreshtoken", { path: "/api/auth/accessToken" });
+    localStorage.removeItem("firstLogin");
+    localStorage.removeItem("__next__cart__beeyou");
+    dispatch({ type: "AUTH", payload: {} });
+    dispatch({ type: "NOTIFY", payload: { success: "Đăng xuất thành công" } });
+    dispatch({ type: "ADD_CART", payload: [] });
+  };
+
+  const loggerRouter = () => {
+    return (
+      <Dropdown>
+        <Dropdown.Toggle id="dropdown-basic" className="dropdown-cus">
+          <i className="fas fa-user"></i>
+          Chào, {auth.user.firstName}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+
+          <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    );
+  };
   return (
     <header>
-      <nav className="mobie-nav">
-        <div className="">
-          <button type="button" className="mobile-menu-btn">
-            <i className="fa fa-bars" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div className="mobile-logo">
-          <a href="#">
-            <Image
-              src="/images/logo.png"
-              alt="BeeYou - Thời trang Chất"
-              width={80}
-              height={80}
-              layout="fixed"
-            />
-          </a>
-        </div>
-        <div className="mobile-cart-btn">
-          <a href="#" className="">
-            <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-          </a>
-        </div>
-      </nav>
-      <div className="header-info">
-        <div className="contact-info">
-          <p className="text-left">
-            <i className="fas fa-phone-alt"></i>
-            <span>Chăm sóc khách hàng:</span>
-            <a href="tel:0867064901">
-              <strong>0867064901</strong>
-            </a>
-          </p>
-          <p className="text-left">
-            <i className="fa fa-credit-card"></i>
-            <span>Mua hàng online:</span>
-            <a href="tel:0867064901">
-              <strong>0867064901</strong>
-            </a>
-          </p>
-        </div>
-        <div className="header-logo">
-          <Link href="/">
-            <a>
+      <div className="wrapper">
+        <nav className="mobie-nav">
+          <div className="">
+            <button type="button" className="mobile-menu-btn">
+              <i className="fa fa-bars" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div className="mobile-logo">
+            <a href="#">
               <Image
-                src="https://res.cloudinary.com/beeyou/image/upload/v1635431347/logo/logo_q5eftl.webp"
+                src="/images/logo.png"
                 alt="BeeYou - Thời trang Chất"
                 width={80}
                 height={80}
                 layout="fixed"
               />
             </a>
-          </Link>
-        </div>
-
-        <ul className="meta-menu" style={{ display: "inline-block" }}>
-          <li>
-            <a href="#">
-              <i className="fas fa-search"></i>
+          </div>
+          <div className="mobile-cart-btn">
+            <a href="#" className="">
+              <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="fas fa-shopping-cart"></i>
-            </a>
-          </li>
-          <li>
-            <Link href="/account/signin">
+          </div>
+        </nav>
+        <div className="header-info">
+          <div className="contact-info">
+            <p>
+              <i className="fab fa-whatsapp"></i>
+              <span>Chăm sóc khách hàng:</span>
+              <a href="tel:0867064901">
+                <strong>0867064901</strong>
+              </a>
+            </p>
+            <p>
+              <i className="fa fa-credit-card"></i>
+              <span>Mua hàng online:</span>
+              <a href="tel:0867064901">
+                <strong>0867064901</strong>
+              </a>
+            </p>
+          </div>
+          <div className="header-logo">
+            <Link href="/">
               <a>
-                <i className="far fa-user"></i>
+                <Image
+                  src="https://res.cloudinary.com/beeyou/image/upload/v1635431347/logo/logo_q5eftl.webp"
+                  alt="BeeYou - Thời trang Chất"
+                  width={80}
+                  height={80}
+                  layout="fixed"
+                />
               </a>
             </Link>
-          </li>
-        </ul>
+          </div>
+
+          <div className="menu-meta">
+            <Form className="form-search">
+              <Form.Control
+                type="text"
+                placeholder="Tìm kiếm..."
+              ></Form.Control>
+              <Button>
+                <i className="fas fa-search"></i>
+              </Button>
+            </Form>
+            <ul>
+              <li>
+                {Object.keys(auth).length === 0 ? (
+                  <Link href="/account/signin">
+                    <a>
+                      <i className="fas fa-user"></i>
+                      Đăng nhập
+                    </a>
+                  </Link>
+                ) : (
+                  loggerRouter()
+                )}
+              </li>
+              <li>
+                <Link href="/gio-hang">
+                  <a>
+                    <i className="fas fa-shopping-cart"></i>
+                    Giỏ hàng ({cart.length})
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       <Mainmenu></Mainmenu>
     </header>

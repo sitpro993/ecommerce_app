@@ -59,7 +59,7 @@ function Footer(props) {
                 <h3>ĐĂNG KÝ NHẬN TIN</h3>
                 <p>Tin khuyến mãi / Tin thương hiệu</p>
                 <form action="" className="contact-form" method="post">
-                  <div className="input-group subscribe-form">
+                  <div className="subscribe-form">
                     <input type="email" placeholder="Nhập email của bạn" />
                     <button type="submit">
                       <i className="fa fa-paper-plane"></i>

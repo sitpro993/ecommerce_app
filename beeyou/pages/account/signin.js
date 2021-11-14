@@ -5,6 +5,8 @@ import { DataContext } from "../../store/GlobalState";
 import { postData } from "../../utils/fecthData";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
+import { Form, Button } from "react-bootstrap";
+import ParallaxScrolling from "../../components/ParallaxScrolling";
 
 export default function SigninPage() {
   const initialState = {
@@ -14,7 +16,7 @@ export default function SigninPage() {
   const [userData, setUserData] = useState(initialState);
   const { email, password } = userData;
 
-  const [state, dispatch] = useContext(DataContext);
+  const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
 
   const router = useRouter();
@@ -70,33 +72,50 @@ export default function SigninPage() {
         <title>Đăng nhập - BeeYou</title>
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
-      <div style={{ margin: "30px" }}>
-        <h1>Đăng nhập</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={email}
-            onChange={handleChangeInput}
-          ></input>
-          <input
-            type="password"
-            placeholder="Mật khẩu"
-            name="password"
-            value={password}
-            onChange={handleChangeInput}
-          ></input>
+      <ParallaxScrolling></ParallaxScrolling>
+      <section className="paddingTop30">
+        <div className="wrapper">
+          <div className="account-container">
+            <div className="account-header">
+              <h1>Đăng nhập</h1>
+            </div>
+            <Form onSubmit={handleSubmit} className="form-account">
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={email}
+                  onChange={handleChangeInput}
+                />
+              </Form.Group>
 
-          <button type="submit">Đăng nhập</button>
-          <Link href="/account/register">
-            <a>Đăng ký</a>
-          </Link>
-          <Link href="#">
-            <a>Quên mật khẩu</a>
-          </Link>
-        </form>
-      </div>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Control
+                  type="password"
+                  placeholder="Mật khẩu"
+                  name="password"
+                  value={password}
+                  onChange={handleChangeInput}
+                />
+              </Form.Group>
+
+              <Button variant="primary" type="submit">
+                Đăng nhập
+              </Button>
+              <Link href="/">
+                <a className="displayBlock">Trở về</a>
+              </Link>
+              <Link href="/account/register">
+                <a className="displayBlock">Đăng ký</a>
+              </Link>
+              <Link href="#">
+                <a className="displayBlock">Quên mật khẩu?</a>
+              </Link>
+            </Form>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
