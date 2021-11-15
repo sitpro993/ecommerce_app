@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { decrease, deleteFromCart, increase } from "../store/Actions";
+import { decrease, deleteFromCart, increase } from "../../store/Actions";
 
 export default function CartItem({ item, dispatch, cart }) {
   const handleDeleteFromCart = () => {

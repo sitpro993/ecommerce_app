@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { DataContext } from "../store/GlobalState";
-import { addToCart } from "../store/Actions";
+import { DataContext } from "../../store/GlobalState";
+import { addToCart } from "../../store/Actions";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Product({ product }) {
   const { state, dispatch } = useContext(DataContext);
@@ -25,13 +25,13 @@ function Product({ product }) {
       <div className="product-img">
         <Link href={`/products/${product.slug}`}>
           <a className="img-resize">
-            <Image
-              width={300}
-              height={300}
+            <LazyLoadImage
+              effect="blur"
+              width="100%"
               layout="intrinsic"
               src="/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png"
               alt={product.title}
-            ></Image>
+            />
           </a>
         </Link>
         <div className="product-actions">

@@ -3,8 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { DataContext } from "../store/GlobalState";
 import { Table } from "react-bootstrap";
-import CartItem from "../components/CartItem";
-import ParallaxScrolling from "../components/ParallaxScrolling";
+import CartItem from "../components/CartComponent/CartItem";
+import ParallaxScrolling from "../components/HomeComponent/User/ParallaxScrolling";
 
 export default function CartPage() {
   const { state, dispatch } = useContext(DataContext);
@@ -72,7 +72,7 @@ export default function CartPage() {
                   <p>
                     <span>Tổng tiền</span>
                     <span>
-                      {total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}đ
+                      {total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₫
                     </span>
                   </p>
                 </div>

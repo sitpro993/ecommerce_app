@@ -5,7 +5,7 @@ import valid from "../../utils/valid";
 import { DataContext } from "../../store/GlobalState";
 import { postData } from "../../utils/fecthData";
 import { Form, Button } from "react-bootstrap";
-import ParallaxScrolling from "../../components/ParallaxScrolling";
+import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
 
 export default function RegisterPage() {
   const initialState = {

@@ -1,9 +1,9 @@
 import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
-import Modal from "./Modal";
-import Notify from "./Notify";
-import ScrollOnTop from "./ScrollOnTop";
+import Modal from "../../SystemNotifiComponent/Modal";
+import Notify from "../../SystemNotifiComponent/Notify";
+import ScrollOnTop from "../../SystemNotifiComponent/ScrollOnTop";
 
 function Layout({ children }) {
   return (

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { deleteItem } from "../store/Actions";
-import { DataContext } from "../store/GlobalState";
+import { deleteItem } from "../../store/Actions";
+import { DataContext } from "../../store/GlobalState";
 
 export default function Modal() {
   const { state, dispatch } = useContext(DataContext);

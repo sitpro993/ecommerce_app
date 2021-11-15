@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Mainmenu from "./Mainmenu";
-import { DataContext } from "../store/GlobalState";
+import { DataContext } from "../../../store/GlobalState";
 import Cookie from "js-cookie";
 import { Dropdown, Form, Button } from "react-bootstrap";
 
@@ -47,7 +47,7 @@ function Header() {
           <div className="mobile-logo">
             <a href="#">
               <Image
-                src="/images/logo.png"
+                src="https://res.cloudinary.com/beeyou/image/upload/v1635431347/logo/logo_q5eftl.webp"
                 alt="BeeYou - Thời trang Chất"
                 width={80}
                 height={80}

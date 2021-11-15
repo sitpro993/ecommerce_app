@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { menu } from "../data/menu.js";
+import { menu } from "../../../data/menu";
 function Mainmenu(props) {
   return (
     <section className="nav-bar">

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { useState } from "react";
 
 function Tabs(props) {
@@ -8,9 +9,9 @@ function Tabs(props) {
 
   return (
     <>
-      <ul className="tab-panel">
+      <ul className={props.class}>
         {props.children.map((elem, index) => {
-          let classList = index === selected ? "tab-panel-selected" : "";
+          let classList = index === selected ? props.classSelected : "";
 
           return (
             <li

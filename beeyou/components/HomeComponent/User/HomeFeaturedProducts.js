@@ -1,9 +1,8 @@
 import React from "react";
-import Product from "./Product";
-import Tabs from "./Tabs";
-import Panel from "./Panel";
+import Tabs from "../../MyTabs/Tabs";
+import Panel from "../../MyTabs/Panel";
 import Link from "next/link";
-import ProductList from "./ProductList";
+import ProductList from "../../ProductComponent/ProductList";
 
 function HomeFeaturedProducts(props) {
   const product1 = [
@@ -37,7 +36,10 @@ function HomeFeaturedProducts(props) {
         <div className="home-section-header">
           <h2>BeeYou</h2>
         </div>
-        <Tabs>
+        <Tabs
+          class="featured-tab-panel"
+          classSelected="featured-tab-panel-selected"
+        >
           <Panel title="Sản phẩm nổi bật">
             <ProductList products={product1}></ProductList>
 

@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import CollectionsSlider from "../components/CollectionsSlider";
-import HomeFeaturedProducts from "../components/HomeFeaturedProducts";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import CollectionsSlider from "../components/HomeComponent/User/CollectionsSlider";
+import HomeFeaturedProducts from "../components/HomeComponent/User/HomeFeaturedProducts";
 import { Col, Row } from "react-bootstrap";
 
 export default function HomePage(props) {
@@ -14,10 +15,11 @@ export default function HomePage(props) {
       </Head>
       <>
         <section className="thumbnail" style={{ width: "100%" }}>
-          <Image
-            width={1600}
-            height={628}
-            src="/images/slideshow_1.png"
+          <LazyLoadImage
+            effect="blur"
+            width="1600px"
+            height="628px"
+            src="https://res.cloudinary.com/beeyou/image/upload/v1636946304/banner/slideshow_1_skpyk4.png"
             alt="BeeYou Collection"
           />
         </section>
@@ -31,7 +33,7 @@ export default function HomePage(props) {
                     <Image
                       width={64}
                       height={64}
-                      src="/images/policy_icon_1.png"
+                      src="https://res.cloudinary.com/beeyou/image/upload/v1636945718/logo/policy_icon_1_xlnjtq.png"
                       alt="GIAO HÀNG TOÀN QUỐC"
                     />
                   </div>
@@ -47,7 +49,7 @@ export default function HomePage(props) {
                     <Image
                       width={64}
                       height={64}
-                      src="/images/policy_icon_2.png"
+                      src="https://res.cloudinary.com/beeyou/image/upload/v1636945720/logo/policy_icon_2_cxcdcl.png"
                       alt="CHẤT LƯỢNG ĐẢM BẢO"
                     />
                   </div>
@@ -63,7 +65,7 @@ export default function HomePage(props) {
                     <Image
                       width={64}
                       height={64}
-                      src="/images/policy_icon_3.png"
+                      src="https://res.cloudinary.com/beeyou/image/upload/v1636945722/logo/policy_icon_3_iiujly.png"
                       alt="ĐỔI TRẢ DỄ DÀNG"
                     />
                   </div>
@@ -84,10 +86,10 @@ export default function HomePage(props) {
               <div className="banner-item">
                 <Link href="/collections/all">
                   <a>
-                    <Image
-                      width={280}
-                      height={280}
-                      src="/images/banner_img_1.png"
+                    <LazyLoadImage
+                      effect="blur"
+                      width="100%"
+                      src="https://res.cloudinary.com/beeyou/image/upload/v1636945666/banner/banner_img_1_gesrdh.webp"
                       alt="BeeYou - Thời trang Chất"
                     />
                   </a>
@@ -96,10 +98,10 @@ export default function HomePage(props) {
               <div className="banner-item">
                 <Link href="/collections/all">
                   <a>
-                    <Image
-                      width={280}
-                      height={280}
-                      src="/images/banner_img_3.png"
+                    <LazyLoadImage
+                      effect="blur"
+                      width="100%"
+                      src="https://res.cloudinary.com/beeyou/image/upload/v1636945683/banner/banner_img_3_fyx2rc.jpg"
                       alt="BeeYou - Thời trang Chất"
                     />
                   </a>
@@ -108,10 +110,10 @@ export default function HomePage(props) {
               <div className="banner-item">
                 <Link href="/collections/all">
                   <a>
-                    <Image
-                      width={720}
-                      height={375}
-                      src="/images/banner_img_2.png"
+                    <LazyLoadImage
+                      effect="blur"
+                      width="100%"
+                      src="https://res.cloudinary.com/beeyou/image/upload/v1636945681/banner/banner_img_2_mzcdd7.webp"
                       alt="BeeYou - Thời trang Chất"
                     />
                   </a>

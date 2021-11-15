@@ -1,10 +1,13 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { getData } from "../../utils/fecthData";
-import ProductList from "../../components/ProductList";
+import ProductList from "../../components/ProductComponent/ProductList";
 import { Accordion, Col, Form, Row } from "react-bootstrap";
-import ParallaxScrolling from "../../components/ParallaxScrolling";
+import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 function CollectionPage(props) {
   return props.collection ? (
@@ -14,36 +17,49 @@ function CollectionPage(props) {
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
       <ParallaxScrolling></ParallaxScrolling>
-      <section className="paddingTop30">
+      <section className="">
         <div className="wrapper">
           <Row>
             <Col xs={3}>
               <div className="sidebar-container">
-                <Accordion defaultActiveKey="0" flush>
+                <Accordion defaultActiveKey="1" flush>
                   <Accordion.Item eventKey="0">
-                    <Accordion.Header>Accordion Item #1</Accordion.Header>
-                    <Accordion.Body>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum.
-                    </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="1">
-                    <Accordion.Header>Accordion Item #2</Accordion.Header>
-                    <Accordion.Body>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum.
+                    <Accordion.Header className="sidebar-title-2">
+                      Sản phẩm nổi bật
+                    </Accordion.Header>
+                    <Accordion.Body className="card-product">
+                      <Link href="/products/op-lung-animal-103">
+                        <a className="sidebar-product-item">
+                          <Image
+                            width={65}
+                            height={65}
+                            src="/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png"
+                            alt="BeeYou - Thời trang Chất"
+                          />
+                          <div className="sidebar-product-content">
+                            <p>Noi dung</p>
+                            <span className="sidebar-product-price">
+                              129.000d
+                            </span>
+                          </div>
+                        </a>
+                      </Link>
+                      <Link href="/products/op-lung-animal-103">
+                        <a className="sidebar-product-item">
+                          <Image
+                            width={65}
+                            height={65}
+                            src="/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png"
+                            alt="BeeYou - Thời trang Chất"
+                          />
+                          <div className="sidebar-product-content">
+                            <p>Noi dung</p>
+                            <span className="sidebar-product-price">
+                              129.000d
+                            </span>
+                          </div>
+                        </a>
+                      </Link>
                     </Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
@@ -57,10 +73,10 @@ function CollectionPage(props) {
                   chất liệu bền đẹp, tốt nhất trên thị trường, hình ảnh in siêu
                   sắc nét, không bong tróc, không trầy xước, không phai màu.
                 </p>
-                <Image
-                  width={1024}
-                  height={205}
-                  src="/images/marble-banner_1024x1024.png"
+                <LazyLoadImage
+                  effect="blur"
+                  width="100%"
+                  src="https://res.cloudinary.com/beeyou/image/upload/v1636945692/banner/marble-banner_1024x1024_feolzg.webp"
                   alt="BeeYou - Thời trang Chất"
                 />
               </div>

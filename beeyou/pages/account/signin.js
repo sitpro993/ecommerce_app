@@ -6,7 +6,7 @@ import { postData } from "../../utils/fecthData";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
 import { Form, Button } from "react-bootstrap";
-import ParallaxScrolling from "../../components/ParallaxScrolling";
+import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
 
 export default function SigninPage() {
   const initialState = {

@@ -1,9 +1,9 @@
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/UserLayout/Layout";
 import "../styles/globals.scss";
 import "bootstrap/dist/css/bootstrap.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import "swiper/scss";
-import { DataContext, DataProvider } from "../store/GlobalState";
-import { useContext } from "react";
+import { DataProvider } from "../store/GlobalState";
 
 function MyApp({ Component, pageProps }) {
   return (

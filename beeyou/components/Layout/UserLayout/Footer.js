@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function Footer(props) {
   return (
@@ -92,11 +93,21 @@ function Footer(props) {
                 <h3>CHỨNG NHẬN</h3>
 
                 <a href="" target="_blank">
-                  <img src="//theme.hstatic.net/1000281383/1000535724/14/footer_payment_logo_1.png?v=242" />
+                  <Image
+                    width={134}
+                    height={51}
+                    src="https://res.cloudinary.com/beeyou/image/upload/v1636949541/logo/footer_payment_logo_1_m63ztj.webp"
+                    alt="BeeYou - Thời trang Chất"
+                  />
                 </a>
 
                 <a href="#" target="_blank">
-                  <img src="//theme.hstatic.net/1000281383/1000535724/14/footer_payment_logo_2.png?v=242" />
+                  <Image
+                    width={134}
+                    height={51}
+                    src="https://res.cloudinary.com/beeyou/image/upload/v1636949568/logo/footer_payment_logo_2_ewcpai.webp"
+                    alt="BeeYou - Thời trang Chất"
+                  />
                 </a>
               </ul>
             </div>

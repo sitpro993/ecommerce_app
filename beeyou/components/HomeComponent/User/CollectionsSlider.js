@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import { Container } from "react-bootstrap";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function CollectionsSlider() {
   const settings = {
@@ -41,18 +42,21 @@ export default function CollectionsSlider() {
   };
   const imgs = [
     {
-      file: "/images/beecase_6ae43e6632cb4ce18d0972c782f7edd5_large.png",
+      file: "https://res.cloudinary.com/beeyou/image/upload/v1636945795/beecase/beecase_6ae43e6632cb4ce18d0972c782f7edd5_large_qh0zwf.png",
       link: "/collections/op-lung",
     },
     {
-      file: "/images/beetee_5a2df0b4d92e4439ab0e77598ec5ed57_large.png",
+      file: "https://res.cloudinary.com/beeyou/image/upload/v1636945814/beetee/beetee_5a2df0b4d92e4439ab0e77598ec5ed57_large_be0snc.webp",
       link: "/collections/ao-thun",
     },
     {
-      file: "/images/beebag_31d7440d436d4e2ca11f85e34bb9a01e_large.png",
+      file: "https://res.cloudinary.com/beeyou/image/upload/v1636945748/beebag/beebag_31d7440d436d4e2ca11f85e34bb9a01e_large_zvjkvf.webp",
       link: "/collections/beebag",
     },
-    { file: "/images/beecarry_large.png", link: "/images/beecarry" },
+    {
+      file: "https://res.cloudinary.com/beeyou/image/upload/v1636945760/beecarry/beecarry_large_xw6jm0.webp",
+      link: "/collections/beecarry",
+    },
   ];
 
   return (
@@ -67,13 +71,12 @@ export default function CollectionsSlider() {
               {imgs.map((img, index) => (
                 <Link key={index} href={img.link}>
                   <a>
-                    <Image
-                      width={300}
-                      height={300}
-                      layout="intrinsic"
+                    <LazyLoadImage
+                      effect="blur"
+                      width="100%"
                       src={img.file}
                       alt="Túi Totebag Xuongrong"
-                    ></Image>
+                    />
                   </a>
                 </Link>
               ))}
