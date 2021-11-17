@@ -1,15 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { getData } from "../../utils/fecthData";
 import ProductList from "../../components/ProductComponent/ProductList";
-import { Accordion, Col, Form, Row } from "react-bootstrap";
+import { Accordion, Col, Form, Pagination, Row } from "react-bootstrap";
 import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import Layout from "../../components/Layout/UserLayout/Layout";
+import ReactPaginate from "react-paginate";
+import Router from "next/router";
 
 function CollectionPage(props) {
+  const [isLoading, setLoading] = useState(false); //State for the loading indicator
+  const startLoading = () => setLoading(true);
+  const stopLoading = () => setLoading(false);
+
+  /*
+    			Posts fetching happens after page navigation,
+    			so we need to switch Loading state on Router events.
+    		*/
+  useEffect(() => {
+    //After the component is mounted set router event handlers
+    Router.events.on("routeChangeStart", startLoading);
+    Router.events.on("routeChangeComplete", stopLoading);
+
+    return () => {
+      Router.events.off("routeChangeStart", startLoading);
+      Router.events.off("routeChangeComplete", stopLoading);
+    };
+  }, []);
+
+  // const pagginationHandler = (page) => {
+  //   const currentPath = props.router.pathname;
+  //   const currentQuery = props.router.query;
+  //   currentQuery.page = page.selected + 1;
+
+  //   props.router.push({
+  //     pathname: currentPath,
+  //     query: currentQuery,
+  //   });
+  // };
+
   return props.collection ? (
     <>
       <Head>
@@ -105,6 +138,21 @@ function CollectionPage(props) {
 
                 <ProductList products={props.collection.product}></ProductList>
               </div>
+
+              {/* <ReactPaginate
+                previousLabel={"previous"}
+                nextLabel={"next"}
+                breakLabel={"..."}
+                breakClassName={"break-me"}
+                activeClassName={"active"}
+                containerClassName={"pagination"}
+                subContainerClassName={"pages pagination"}
+                initialPage={props.currentPage - 1}
+                pageCount={props.pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={pagginationHandler}
+              /> */}
             </Col>
           </Row>
         </div>
@@ -113,10 +161,20 @@ function CollectionPage(props) {
   ) : null;
 }
 
-CollectionPage.getInitialProps = async (context) => {
-  const res = await getData(`collection/${context.query.slug}`);
+CollectionPage.getInitialProps = async ({ query }) => {
+  const page = query.page;
+  const limit = 12;
+  const res = await getData(
+    `collection/${query.slug}?page=${page}&limit=${limit}`
+  );
   return {
     collection: res.category,
+    page: res.page,
+    pageCount: Math.ceil(res.category.totalProduct / limit),
   };
 };
 export default CollectionPage;
+
+CollectionPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};

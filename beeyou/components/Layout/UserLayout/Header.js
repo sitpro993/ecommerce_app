@@ -28,7 +28,9 @@ function Header() {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+          <Link href="/account" passHref>
+            <Dropdown.Item>Thông tin tài khoản</Dropdown.Item>
+          </Link>
 
           <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
         </Dropdown.Menu>

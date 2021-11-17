@@ -5,6 +5,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import CollectionsSlider from "../components/HomeComponent/User/CollectionsSlider";
 import HomeFeaturedProducts from "../components/HomeComponent/User/HomeFeaturedProducts";
 import { Col, Row } from "react-bootstrap";
+import Layout from "../components/Layout/UserLayout/Layout";
 
 export default function HomePage(props) {
   return (
@@ -127,3 +128,7 @@ export default function HomePage(props) {
     </>
   );
 }
+
+HomePage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};

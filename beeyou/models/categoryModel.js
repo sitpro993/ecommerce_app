@@ -10,9 +10,15 @@ const categorySchema = new mongoose.Schema(
     },
     slug: { type: String, required: true },
     product: [{ type: mongoose.Schema.Types.ObjectId, ref: "product" }],
+    totalProduct: { type: Number },
   },
   { timestamps: true }
 );
+
+categorySchema.pre("validate", function (next) {
+  this.totalProduct = this.product.length;
+  next();
+});
 
 let Dataset =
   mongoose.models.category || mongoose.model("category", categorySchema);

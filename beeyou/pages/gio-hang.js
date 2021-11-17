@@ -5,12 +5,15 @@ import { DataContext } from "../store/GlobalState";
 import { Table } from "react-bootstrap";
 import CartItem from "../components/CartComponent/CartItem";
 import ParallaxScrolling from "../components/HomeComponent/User/ParallaxScrolling";
+import Layout from "../components/Layout/UserLayout/Layout";
+import { useRouter } from "next/router";
 
 export default function CartPage() {
   const { state, dispatch } = useContext(DataContext);
-  const { cart } = state;
+  const { cart, auth } = state;
 
   const [total, setTotal] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const getTotal = () => {
@@ -23,6 +26,10 @@ export default function CartPage() {
 
     getTotal();
   }, [cart]);
+
+  const checkoutHandler = () => {
+    router.push("/checkouts");
+  };
   return (
     <>
       <Head>
@@ -75,6 +82,7 @@ export default function CartPage() {
                       {total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₫
                     </span>
                   </p>
+                  <button onClick={checkoutHandler}>Thanh toán</button>
                 </div>
               </div>
             </>
@@ -91,3 +99,7 @@ export default function CartPage() {
     </>
   );
 }
+
+CartPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};

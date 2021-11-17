@@ -5,6 +5,7 @@ import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrol
 import { getData } from "../../utils/fecthData";
 import Tabs from "../../components/MyTabs/Tabs";
 import Panel from "../../components/MyTabs/Panel";
+import Layout from "../../components/Layout/UserLayout/Layout";
 
 export const getServerSideProps = async ({ params: { slug } }) => {
   const res = await getData(`product/${slug}`);
@@ -247,3 +248,7 @@ export default function ProductDetail() {
     </>
   );
 }
+
+ProductDetail.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};

@@ -6,6 +6,7 @@ import { DataContext } from "../../store/GlobalState";
 import { postData } from "../../utils/fecthData";
 import { Form, Button } from "react-bootstrap";
 import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
+import Layout from "../../components/Layout/UserLayout/Layout";
 
 export default function RegisterPage() {
   const initialState = {
@@ -118,3 +119,7 @@ export default function RegisterPage() {
     </>
   );
 }
+
+RegisterPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};

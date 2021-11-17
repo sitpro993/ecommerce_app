@@ -7,6 +7,7 @@ import Cookie from "js-cookie";
 import { useRouter } from "next/router";
 import { Form, Button } from "react-bootstrap";
 import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
+import Layout from "../../components/Layout/UserLayout/Layout";
 
 export default function SigninPage() {
   const initialState = {
@@ -64,7 +65,10 @@ export default function SigninPage() {
   };
 
   useEffect(() => {
-    if (Object.keys(auth).length !== 0) router.push("/");
+    if (Object.keys(auth).length !== 0) {
+      if (auth.user.role === "admin") router.push("/admin/dashboard");
+      else router.push("/");
+    }
   }, [auth, router]);
   return (
     <>
@@ -119,3 +123,7 @@ export default function SigninPage() {
     </>
   );
 }
+
+SigninPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
