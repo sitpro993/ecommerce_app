@@ -248,7 +248,3 @@ export default function ProductDetail() {
     </>
   );
 }
-
-ProductDetail.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

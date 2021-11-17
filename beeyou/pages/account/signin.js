@@ -123,7 +123,3 @@ export default function SigninPage() {
     </>
   );
 }
-
-SigninPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

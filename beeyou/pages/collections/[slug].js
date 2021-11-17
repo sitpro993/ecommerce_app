@@ -10,13 +10,14 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Layout from "../../components/Layout/UserLayout/Layout";
 import ReactPaginate from "react-paginate";
-import Router from "next/router";
+import Router, { useRouter, withRouter } from "next/router";
+import Loading from "../../components/SystemNotifiComponent/Loading";
 
 function CollectionPage(props) {
   const [isLoading, setLoading] = useState(false); //State for the loading indicator
   const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);
-
+  const router = useRouter();
   /*
     			Posts fetching happens after page navigation,
     			so we need to switch Loading state on Router events.
@@ -32,16 +33,16 @@ function CollectionPage(props) {
     };
   }, []);
 
-  // const pagginationHandler = (page) => {
-  //   const currentPath = props.router.pathname;
-  //   const currentQuery = props.router.query;
-  //   currentQuery.page = page.selected + 1;
+  const pagginationHandler = (page) => {
+    const currentPath = router.pathname;
+    const currentQuery = router.query;
+    currentQuery.page = page.selected + 1;
 
-  //   props.router.push({
-  //     pathname: currentPath,
-  //     query: currentQuery,
-  //   });
-  // };
+    router.push({
+      pathname: currentPath,
+      query: currentQuery,
+    });
+  };
 
   return props.collection ? (
     <>
@@ -136,23 +137,36 @@ function CollectionPage(props) {
                   </Form.Select>
                 </Form.Group>
 
-                <ProductList products={props.collection.product}></ProductList>
+                {isLoading ? (
+                  <Loading />
+                ) : (
+                  <ProductList
+                    products={props.collection.product}
+                  ></ProductList>
+                )}
               </div>
-
-              {/* <ReactPaginate
-                previousLabel={"previous"}
-                nextLabel={"next"}
-                breakLabel={"..."}
-                breakClassName={"break-me"}
-                activeClassName={"active"}
-                containerClassName={"pagination"}
-                subContainerClassName={"pages pagination"}
-                initialPage={props.currentPage - 1}
-                pageCount={props.pageCount}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={pagginationHandler}
-              /> */}
+              <div className="my-pagination">
+                <ReactPaginate
+                  containerClassName={"pagination justify-content-center"}
+                  previousLabel={"<<"}
+                  previousClassName={"page-item"}
+                  previousLinkClassName={"page-link"}
+                  nextLabel={">>"}
+                  nextClassName={"page-item"}
+                  nextLinkClassName={"page-link"}
+                  breakLabel={"..."}
+                  breakClassName={"page-item"}
+                  breakLinkClassName={"page-link"}
+                  pageClassName={"page-item"}
+                  pageLinkClassName={"page-link"}
+                  activeClassName={"active"}
+                  initialPage={props.currentPage - 1}
+                  pageCount={props.pageCount}
+                  marginPagesDisplayed={6}
+                  pageRangeDisplayed={3}
+                  onPageChange={pagginationHandler}
+                />
+              </div>
             </Col>
           </Row>
         </div>
@@ -162,7 +176,7 @@ function CollectionPage(props) {
 }
 
 CollectionPage.getInitialProps = async ({ query }) => {
-  const page = query.page;
+  const page = query.page || 1;
   const limit = 12;
   const res = await getData(
     `collection/${query.slug}?page=${page}&limit=${limit}`
@@ -173,8 +187,5 @@ CollectionPage.getInitialProps = async ({ query }) => {
     pageCount: Math.ceil(res.category.totalProduct / limit),
   };
 };
-export default CollectionPage;
 
-CollectionPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+export default CollectionPage;

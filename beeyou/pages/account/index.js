@@ -27,7 +27,3 @@ export default function ProfilePage() {
     </>
   );
 }
-
-ProfilePage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

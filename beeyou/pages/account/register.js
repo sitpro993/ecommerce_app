@@ -119,7 +119,3 @@ export default function RegisterPage() {
     </>
   );
 }
-
-RegisterPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

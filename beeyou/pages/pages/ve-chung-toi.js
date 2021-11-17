@@ -14,7 +14,3 @@ export default function AboutUsPage(props) {
     </>
   );
 }
-
-AboutUsPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

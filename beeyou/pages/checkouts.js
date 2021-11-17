@@ -15,7 +15,3 @@ export default function CheckoutsPage() {
     </>
   );
 }
-
-CheckoutsPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

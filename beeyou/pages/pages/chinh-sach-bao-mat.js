@@ -17,7 +17,3 @@ export default function PolicyPage(props) {
     </>
   );
 }
-
-PolicyPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

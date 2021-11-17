@@ -17,7 +17,3 @@ export default function PolicyArrantyPage(props) {
     </>
   );
 }
-
-PolicyArrantyPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

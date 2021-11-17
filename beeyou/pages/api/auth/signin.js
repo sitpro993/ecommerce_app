@@ -22,8 +22,7 @@ const sign = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await Users.findOne({ email });
-    if (!user)
-      return res.status(400).json({ err: "Tài khoản không tồn tâij." });
+    if (!user) return res.status(400).json({ err: "Tài khoản không tồn tại." });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ err: "Mật khẩu không đúng." });

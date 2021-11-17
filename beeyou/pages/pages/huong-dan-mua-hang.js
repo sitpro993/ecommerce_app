@@ -17,7 +17,3 @@ export default function ShoppingGuidePage(props) {
     </>
   );
 }
-
-ShoppingGuidePage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

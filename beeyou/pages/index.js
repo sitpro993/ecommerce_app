@@ -128,7 +128,3 @@ export default function HomePage(props) {
     </>
   );
 }
-
-HomePage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

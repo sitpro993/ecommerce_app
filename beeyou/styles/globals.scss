@@ -607,3 +607,41 @@ footer {
     font-size: 18px;
   }
 }
+
+///pagination
+.my-pagination {
+  padding-bottom: 30px;
+  .pagination {
+    .page-item {
+      margin: 0 5px;
+      .page-link {
+        border: none;
+        color: #333;
+        font-weight: bold;
+        border-radius: 2px;
+        background-color: #fff;
+
+        &:hover {
+          color: #fff;
+          background-color: #000;
+          border-radius: 2px;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .active {
+      .page-link {
+        color: #fff;
+        background-color: #ffc800;
+        border-radius: 2px;
+        &:hover {
+          color: #fff;
+          background-color: #ffc800;
+        }
+      }
+    }
+  }
+}

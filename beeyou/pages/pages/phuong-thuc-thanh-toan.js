@@ -17,7 +17,3 @@ export default function PaymentMethodsPage(props) {
     </>
   );
 }
-
-PaymentMethodsPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
