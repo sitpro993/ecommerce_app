@@ -37,6 +37,8 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     if (cart.length > 0) {
       localStorage.setItem("__next__cart__beeyou", JSON.stringify(cart));
+    } else if (cart.length === 0) {
+      localStorage.removeItem("__next__cart__beeyou");
     }
   }, [cart]);
 

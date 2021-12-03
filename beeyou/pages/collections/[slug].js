@@ -14,6 +14,7 @@ import Router, { useRouter, withRouter } from "next/router";
 import Loading from "../../components/SystemNotifiComponent/Loading";
 
 function CollectionPage(props) {
+  const [filter, setFilter] = useState("title-ascending");
   const [isLoading, setLoading] = useState(false); //State for the loading indicator
   const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);
@@ -120,7 +121,10 @@ function CollectionPage(props) {
                   className="collection-filter"
                 >
                   <Form.Label>Sắp xếp</Form.Label>
-                  <Form.Select defaultValue="title-ascending">
+                  <Form.Select
+                    value="title-ascending"
+                    onchange={() => setFilter(e.target.value)}
+                  >
                     <option value="best-selling">Sản phẩm bán chạy</option>
                     <option value="title-ascending">
                       Theo bảng chữ cái từ A-Z
@@ -178,6 +182,7 @@ function CollectionPage(props) {
 CollectionPage.getInitialProps = async ({ query }) => {
   const page = query.page || 1;
   const limit = 12;
+
   const res = await getData(
     `collection/${query.slug}?page=${page}&limit=${limit}`
   );

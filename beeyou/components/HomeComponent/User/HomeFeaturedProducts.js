@@ -16,11 +16,11 @@ function HomeFeaturedProducts(props) {
       variant: [
         {
           title: "iphone XS Max",
-          img: "link ảnh",
+          img: "https://res.cloudinary.com/beeyou/image/upload/v1636734594/beecase/%E1%BB%90P%20L%C6%AFNG%20ANIMAL/upload_e5eb4f9b789d4418a02909ba3b87b16c_large_wardtj.jpg",
         },
         {
           title: " iphone 7",
-          img: "link ảnh",
+          img: "https://res.cloudinary.com/beeyou/image/upload/v1636734594/beecase/%E1%BB%90P%20L%C6%AFNG%20ANIMAL/upload_46e17cac7eaf49de9dc13e73af999dce_large_q9xvjx.jpg",
         },
       ],
       size: ["X", "XL", "L", "S"],

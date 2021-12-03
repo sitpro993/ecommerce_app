@@ -8,12 +8,8 @@ function Product({ product }) {
   const { state, dispatch } = useContext(DataContext);
   const { cart } = state;
 
-  if (product) {
-    const link = `/products/${product.slug}`;
-  }
-
   const handleAddToCart = () => {
-    dispatch(addToCart(product, cart));
+    dispatch(addToCart(product, cart, 1, 0, product.size.length > 0 ? 0 : -1));
     dispatch({
       type: "NOTIFY",
       payload: { success: "Đã thêm vào giỏ hàng" },
@@ -29,7 +25,7 @@ function Product({ product }) {
               effect="blur"
               width="100%"
               layout="intrinsic"
-              src="/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png"
+              src={product.variant[0].img}
               alt={product.title}
             />
           </a>

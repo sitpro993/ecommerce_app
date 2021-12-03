@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
 import { getData } from "../../utils/fecthData";
 import Tabs from "../../components/MyTabs/Tabs";
 import Panel from "../../components/MyTabs/Panel";
-import Layout from "../../components/Layout/UserLayout/Layout";
+import { DataContext } from "../../store/GlobalState";
+import { addToCart } from "../../store/Actions";
 
 export const getServerSideProps = async ({ params: { slug } }) => {
   const res = await getData(`product/${slug}`);
@@ -14,42 +15,29 @@ export const getServerSideProps = async ({ params: { slug } }) => {
   };
 };
 
-export default function ProductDetail() {
-  const [img, setImg] = useState(0);
+export default function ProductDetail({ product }) {
+  const { state, dispatch } = useContext(DataContext);
+  const { cart } = state;
+  const [indexVariant, setIndexVariant] = useState(0);
+  const [indexSize, setIndexSize] = useState(product.size.length > 0 ? 0 : -1);
+  const [count, setCount] = useState(1);
 
-  const product = {
-    _id: {
-      $oid: "61895e928b3104b83c9e47bc",
-    },
-    title: "Ốp lưng Animal 103",
-    slug: "op-lung-animal-103",
-    price: 120000,
-    description: "Ốp lưng dẻo, tráng gương, uv in siêu sắc nét",
-    variant: [
-      {
-        id: 0,
-        title: "iphone XS Max",
-        img: "/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png",
-      },
-      {
-        id: 1,
-        title: " iphone 7",
-        img: "/images/_mg_1268-1_ce1143f3626545a1a4e54d716967ea58_large.png",
-      },
-    ],
-    size: ["X", "XL", "L", "S"],
-    category: ["BeeCase", "Ốp lưng animal", "Ốp lưng nam"],
-    checked: true,
-    sold: 10,
-  };
-  const [value, setValue] = useState(1);
   const handleIncrease = () => {
-    let tmp = value + 1;
-    setValue(tmp);
+    let tmp = count + 1;
+    setCount(tmp);
   };
   const handleDecrease = () => {
-    let tmp = value - 1;
-    setValue(tmp);
+    let tmp = count - 1;
+    setCount(tmp);
+  };
+
+  const handleAddToCart = () => {
+    console.log(count, indexVariant, indexSize);
+    dispatch(addToCart(product, cart, count, indexVariant, indexSize));
+    dispatch({
+      type: "NOTIFY",
+      payload: { success: "Đã thêm vào giỏ hàng" },
+    });
   };
 
   return (
@@ -65,13 +53,13 @@ export default function ProductDetail() {
             <div className="details-img-product">
               <ul className="small-image-product">
                 {product.variant.map((item, index) => (
-                  <li key={item.id} className="details-thumbnail-item">
+                  <li key={index} className="details-thumbnail-item">
                     <Image
                       width={78}
                       height={78}
                       src={item.img}
                       alt={item.title}
-                      onClick={() => setImg(index)}
+                      onClick={() => setIndexVariant(index)}
                     />
                   </li>
                 ))}
@@ -80,7 +68,7 @@ export default function ProductDetail() {
                 <Image
                   width={374}
                   height={374}
-                  src={product.variant[img].img}
+                  src={product.variant[indexVariant].img}
                   alt=""
                 />
               </div>
@@ -103,9 +91,9 @@ export default function ProductDetail() {
                 <p>Tiêu đề</p>
                 <select
                   className="select-details"
-                  value={img}
+                  value={indexVariant}
                   onChange={(e) => {
-                    setImg(e.target.value);
+                    setIndexVariant(parseInt(e.target.value));
                   }}
                 >
                   {product.variant.map((item, index) => (
@@ -118,9 +106,15 @@ export default function ProductDetail() {
               {product.size.length > 0 ? (
                 <div className="detail-title-infor">
                   <p>Size</p>
-                  <select className="select-details">
+                  <select
+                    className="select-details"
+                    value={indexSize}
+                    onChange={(e) => {
+                      setIndexSize(e.target.value);
+                    }}
+                  >
                     {product.size.map((item, index) => (
-                      <option value={item} key={index}>
+                      <option value={index} key={index}>
                         {item}
                       </option>
                     ))}
@@ -134,11 +128,11 @@ export default function ProductDetail() {
                   <button
                     className="btn btn-outline-secondary"
                     onClick={() => handleDecrease()}
-                    disabled={value === 1 ? true : false}
+                    disabled={count === 1 ? true : false}
                   >
                     -
                   </button>
-                  <span>{value}</span>
+                  <span>{count}</span>
                   <button
                     className="btn btn-outline-secondary"
                     onClick={() => handleIncrease()}
@@ -147,7 +141,10 @@ export default function ProductDetail() {
                   </button>
                 </div>
               </div>
-              <button className="details-cart">
+              <button
+                className="details-cart"
+                onClick={() => handleAddToCart()}
+              >
                 <span>Mua ngay</span>
               </button>
             </div>

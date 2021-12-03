@@ -10,7 +10,7 @@ const categorySchema = new mongoose.Schema(
     },
     slug: { type: String, required: true },
     product: [{ type: mongoose.Schema.Types.ObjectId, ref: "product" }],
-    totalProduct: { type: Number },
+    totalProduct: { type: Number, required: true },
   },
   { timestamps: true }
 );

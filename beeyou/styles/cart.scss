@@ -1,3 +1,21 @@
+.change-variant {
+    margin-top: 10px;
+    label {
+        font-weight: 500;
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+
+    select {
+        padding: 5px;
+        border: 1px solid #f4f4f4;
+        border-radius: 2px;
+    }
+    .select-variant {
+        width: 150px;
+    }
+}
+
 .cart-note {
     label {
         cursor: pointer;
@@ -19,5 +37,22 @@
                 font-weight: bold;
             }
         }
+    }
+}
+
+.btn-checkout {
+    color: #333333;
+    padding: 10px 25px;
+    background: #fff;
+    border: 1px solid #f4f4f4;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in;
+    &:hover {
+        color: #fff;
+        background-color: #000;
     }
 }

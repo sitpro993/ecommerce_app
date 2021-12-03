@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { decrease, deleteFromCart, increase } from "../../store/Actions";
 
 export default function CartItem({ item, dispatch, cart }) {
@@ -8,21 +9,34 @@ export default function CartItem({ item, dispatch, cart }) {
       type: "NOTIFY",
       payload: { success: "Đã xóa khỏi giỏ hàng" },
     });
-    dispatch(deleteFromCart(cart, item._id));
+    dispatch(deleteFromCart(cart, item._id, item.indexVariant, item.indexSize));
   };
 
   return (
     <tr>
       <td colSpan="1" className="align-middle">
-        <Image
-          width={64}
-          height={64}
-          src="/images/_mg_1268-1_ce1143f3626545a1a4e54d716967ea58_large.png"
-          alt="GIAO HÀNG TOÀN QUỐC"
-        />
+        <Link href={`/products/${item.slug}`}>
+          <a>
+            <Image
+              width={64}
+              height={64}
+              src={item.variant[item.indexVariant].img}
+              alt="GIAO HÀNG TOÀN QUỐC"
+            />
+          </a>
+        </Link>
       </td>
-      <td colSpan="4" className="align-middle">
-        <strong>{item.title}</strong>
+      <td colSpan="1" className="align-middle ">
+        <Link href={`/products/${item.slug}`}>
+          <a>
+            <strong style={{ color: "#333", fontSize: "16px" }}>
+              {item.title +
+                "-" +
+                item.variant[item.indexVariant].title +
+                (item.indexSize !== -1 ? "-" + item.size[item.indexSize] : "")}
+            </strong>
+          </a>
+        </Link>
       </td>
       <td colSpan="1" className="align-middle">
         {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -31,7 +45,11 @@ export default function CartItem({ item, dispatch, cart }) {
         <div className="change-qty">
           <button
             className="btn btn-outline-secondary"
-            onClick={() => dispatch(decrease(cart, item._id))}
+            onClick={() =>
+              dispatch(
+                decrease(cart, item._id, item.indexVariant, item.indexSize)
+              )
+            }
             disabled={item.quantity === 1 ? true : false}
           >
             -
@@ -41,7 +59,11 @@ export default function CartItem({ item, dispatch, cart }) {
 
           <button
             className="btn btn-outline-secondary"
-            onClick={() => dispatch(increase(cart, item._id))}
+            onClick={() =>
+              dispatch(
+                increase(cart, item._id, item.indexVariant, item.indexSize)
+              )
+            }
           >
             +
           </button>

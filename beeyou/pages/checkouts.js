@@ -1,9 +1,9 @@
 import React from "react";
 import Head from "next/head";
-import Layout from "../components/Layout/UserLayout/Layout";
 import ParallaxScrolling from "../components/HomeComponent/User/ParallaxScrolling";
+import withAuth from "../components/HOCs/withAuth";
 
-export default function CheckoutsPage() {
+function CheckoutsPage() {
   return (
     <>
       <Head>
@@ -15,3 +15,5 @@ export default function CheckoutsPage() {
     </>
   );
 }
+
+export default withAuth(CheckoutsPage);

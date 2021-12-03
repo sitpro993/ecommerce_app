@@ -30,6 +30,7 @@ export default function CartPage() {
   const checkoutHandler = () => {
     router.push("/checkouts");
   };
+
   return (
     <>
       <Head>
@@ -37,7 +38,7 @@ export default function CartPage() {
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
       <ParallaxScrolling />
-      <section className="paddingTop30">
+      <section className="paddingTop30" style={{ marginBottom: "30px" }}>
         <div className="wrapper">
           <div className="page-header">
             <h1>Giỏ hàng</h1>
@@ -49,7 +50,7 @@ export default function CartPage() {
                 <thead>
                   <tr>
                     <th colSpan="1">Image</th>
-                    <th colSpan="4">Sản phẩm</th>
+                    <th colSpan="1">Sản phẩm</th>
                     <th colSpan="1">Đơn giá</th>
                     <th colSpan="1">Số lượng</th>
                     <th colSpan="1">Thành tiền</th>
@@ -57,9 +58,9 @@ export default function CartPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {cart.map((item) => (
+                  {cart.map((item, index) => (
                     <CartItem
-                      key={item._id}
+                      key={index}
                       item={item}
                       dispatch={dispatch}
                       cart={cart}
@@ -82,7 +83,12 @@ export default function CartPage() {
                       {total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₫
                     </span>
                   </p>
-                  <button onClick={checkoutHandler}>Thanh toán</button>
+                  <button
+                    className="btn-checkout"
+                    onClick={() => router.push("/checkouts")}
+                  >
+                    Thanh toán
+                  </button>
                 </div>
               </div>
             </>
