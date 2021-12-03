@@ -16,7 +16,7 @@ export default async (req, res) => {
 const getCollection = async (req, res) => {
   try {
     const page = req.query.page > 1 ? req.query.page : 1;
-    const limit = req.query.limit > 1 ? req.query.limit : 3;
+    const limit = req.query.limit > 1 ? req.query.limit : 12;
     const skip = (page - 1) * limit;
 
     const sort_by = req.query.sort_by;

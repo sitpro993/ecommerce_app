@@ -28,8 +28,14 @@ function Header() {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
+          <Link href="/checkouts" passHref>
+            <Dropdown.Item>Thông tin đơn hàng</Dropdown.Item>
+          </Link>
           <Link href="/account" passHref>
             <Dropdown.Item>Thông tin tài khoản</Dropdown.Item>
+          </Link>
+          <Link href="/" passHref>
+            <Dropdown.Item>Đổi mật khẩu</Dropdown.Item>
           </Link>
 
           <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>

@@ -6,7 +6,6 @@ export const ACTIONS = {
 };
 
 export const addToCart = (product, cart, quantity, indexVariant, indexSize) => {
-  // const check = cart.findIndex((item) => item._id === product._id);
   const check = cart.findIndex(
     (item) =>
       item._id === product._id &&

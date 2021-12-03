@@ -10,6 +10,9 @@ import { addToCart } from "../../store/Actions";
 
 export const getServerSideProps = async ({ params: { slug } }) => {
   const res = await getData(`product/${slug}`);
+  if (!res.product) {
+    return { notFound: true };
+  }
   return {
     props: { product: res.product },
   };

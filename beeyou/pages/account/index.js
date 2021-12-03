@@ -1,18 +1,12 @@
-import { useRouter } from "next/router";
 import React, { useContext, useEffect } from "react";
 import Head from "next/head";
 import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
 import { DataContext } from "../../store/GlobalState";
-import Layout from "../../components/Layout/UserLayout/Layout";
+import withAuth from "../../components/HOCs/withAuth";
 
-export default function ProfilePage() {
+function ProfilePage() {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
-  const router = useRouter();
-
-  useEffect(() => {
-    Object.keys(auth).length === 0 && router.push("/account/signin");
-  }, [auth, router]);
 
   return (
     <>
@@ -22,8 +16,65 @@ export default function ProfilePage() {
       </Head>
       <ParallaxScrolling />
       <section className="wrapper">
-        <h1>Tài khoản của tôi</h1>
+        <div className="page-header">
+          <h1>Tài khoản của tôi</h1>
+        </div>
+        <hr></hr>
+        <div className="row align-items-start">
+          <div className="col">
+            <table className="table">
+              <thead>
+                <tr>
+                  <h3>Thông tin đăng nhập</h3>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Số điện thoại</td>
+                  <td>0867064901</td>
+                  <td>Thay đổi</td>
+                </tr>
+                <tr>
+                  <td>E-mail</td>
+                  <td>sitpro993@gmail.com</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="col">
+            <table className="table">
+              <thead>
+                <tr>
+                  <h3>Thông tin cá nhân</h3>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
     </>
   );
 }
+
+export default withAuth(ProfilePage);

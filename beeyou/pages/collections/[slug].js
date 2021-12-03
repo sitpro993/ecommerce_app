@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import Router, { useRouter } from "next/router";
 import { getData } from "../../utils/fecthData";
 import ProductList from "../../components/ProductComponent/ProductList";
-import { Accordion, Col, Form, Pagination, Row } from "react-bootstrap";
+import { Accordion, Col, Form, Row } from "react-bootstrap";
 import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import Layout from "../../components/Layout/UserLayout/Layout";
 import ReactPaginate from "react-paginate";
-import Router, { useRouter, withRouter } from "next/router";
+
 import Loading from "../../components/SystemNotifiComponent/Loading";
+import filterSearch from "../../utils/filterSearch";
 
 function CollectionPage(props) {
   const [filter, setFilter] = useState("title-ascending");
@@ -35,16 +36,15 @@ function CollectionPage(props) {
   }, []);
 
   const pagginationHandler = (page) => {
-    const currentPath = router.pathname;
-    const currentQuery = router.query;
-    currentQuery.page = page.selected + 1;
-
-    router.push({
-      pathname: currentPath,
-      query: currentQuery,
-    });
+    if (page.selected >= 0) {
+      filterSearch({ router, page: page.selected + 1 });
+    }
   };
 
+  const handleChangeFilter = (e) => {
+    setFilter(e.target.value);
+    filterSearch({ router, sort_by: e.target.value });
+  };
   return props.collection ? (
     <>
       <Head>
@@ -121,10 +121,7 @@ function CollectionPage(props) {
                   className="collection-filter"
                 >
                   <Form.Label>Sắp xếp</Form.Label>
-                  <Form.Select
-                    value="title-ascending"
-                    onchange={() => setFilter(e.target.value)}
-                  >
+                  <Form.Select value={filter} onChange={handleChangeFilter}>
                     <option value="best-selling">Sản phẩm bán chạy</option>
                     <option value="title-ascending">
                       Theo bảng chữ cái từ A-Z
@@ -178,19 +175,29 @@ function CollectionPage(props) {
     </>
   ) : null;
 }
+export default CollectionPage;
 
-CollectionPage.getInitialProps = async ({ query }) => {
+export const getServerSideProps = async ({ params, query }) => {
   const page = query.page || 1;
-  const limit = 12;
+  const sort_by = query.sort_by || "title-ascending";
 
   const res = await getData(
-    `collection/${query.slug}?page=${page}&limit=${limit}`
+    `collection/${params.slug}?page=${page}&sort_by=${sort_by}`
   );
+  // const data = await res.json();
+
+  if (!res.category) {
+    return {
+      notFound: true,
+    };
+  }
+  //Math.ceil(res.category.totalProduct)
   return {
-    collection: res.category,
-    page: res.page,
-    pageCount: Math.ceil(res.category.totalProduct / limit),
+    props: {
+      res,
+      collection: res.category,
+      page: res.page,
+      pageCount: 2,
+    },
   };
 };
-
-export default CollectionPage;
