@@ -44,56 +44,6 @@
         font-size: 14px;
         font-weight: 400;
     }
-
-    .details-cart {
-        margin-top: 15px;
-        width: 100%;
-        border-radius: 2px;
-        background: #ffc800;
-        padding: 15px;
-        border: none;
-        span {
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        &:hover {
-            background-color: #ff0000;
-        }
-    }
-    .detail-title-infor {
-        display: flex;
-        margin-bottom: 15px;
-        align-items: center;
-        p {
-            margin: auto 0;
-            padding-right: 15px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #333;
-        }
-        .select-details {
-            width: 178px;
-            padding: 5px 10px;
-            border: 1px solid #f4f4f4;
-            color: #999;
-        }
-        .number-product {
-            span {
-                padding: 0 15px;
-                color: #000000;
-                font-size: 18px;
-            }
-            button {
-                margin: 0 auto;
-                color: #333333;
-                font-size: 18px;
-                border: 1px solid #f4f4f4;
-            }
-        }
-    }
 }
 .detail-infor-ship {
     .infor-ship-all {
@@ -132,5 +82,56 @@
                 }
             }
         }
+    }
+}
+
+.detail-title-infor {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+    p {
+        margin: auto 0;
+        padding-right: 15px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+    }
+    .select-details {
+        width: 178px;
+        padding: 5px 10px;
+        border: 1px solid #f4f4f4;
+        color: #999;
+    }
+    .number-product {
+        span {
+            padding: 0 15px;
+            color: #000000;
+            font-size: 18px;
+        }
+        button {
+            margin: 0 auto;
+            color: #333333;
+            font-size: 18px;
+            border: 1px solid #f4f4f4;
+        }
+    }
+}
+
+.details-cart {
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 2px;
+    background: #ffc800;
+    padding: 15px;
+    border: none;
+    span {
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    &:hover {
+        background-color: #ff0000;
     }
 }

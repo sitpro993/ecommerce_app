@@ -33,3 +33,83 @@
 .paddingTop30 {
     padding-top: 30px;
 }
+
+// home collection
+.home-collection {
+    .home-collection-thumbnail {
+        a {
+            img {
+                overflow: hidden;
+                transition: all 0.3s;
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+}
+
+.policy-item {
+    padding: 10px;
+    border: double 4px #f4f4f4;
+    text-align: center;
+    transition: all 0.3s;
+    &:hover {
+        border-color: #222;
+    }
+
+    .policy-icon {
+        margin-bottom: 5px;
+    }
+    .policy-title {
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .policy-desc {
+        color: #333;
+    }
+}
+
+// home banner
+
+.home-banner {
+    .banner-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: "img1 img3 img2";
+        gap: 30px;
+        .banner-item {
+            overflow: hidden;
+
+            a {
+                img {
+                    transition: all 0.3s;
+                }
+            }
+
+            &:hover {
+                a {
+                    img {
+                        transform: scale(1.05);
+                    }
+                }
+            }
+            &:nth-child(1) {
+                grid-area: img1;
+            }
+
+            &:nth-child(2) {
+                grid-area: img2;
+            }
+
+            &:nth-child(3) {
+                grid-area: img3;
+            }
+        }
+    }
+}
+///home features
+.home-featured {
+    padding-bottom: 30px;
+}

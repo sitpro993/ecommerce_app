@@ -22,7 +22,7 @@ export default function Modal() {
     <>
       <div
         className="modal fade"
-        id="exampleModal"
+        id="NotifyModal"
         tabIndex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
