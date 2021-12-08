@@ -54,7 +54,10 @@ function CheckoutsPage() {
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
       <ParallaxScrolling></ParallaxScrolling>
-      <section className="wrapper paddingTop30">
+      <section
+        className="wrapper paddingTop30 "
+        style={{ marginBottom: "30px" }}
+      >
         <div className="row">
           <div className="col-7">
             <div className="order-main">
@@ -83,7 +86,8 @@ function CheckoutsPage() {
                     <div className="logged-in-customer-information-avatar gravatar"></div>
                   </div>
                   <p className="logged-in-customer-information-paragraph">
-                    Nguyễn Văn Hồng (khongcotaikhoan916@gmail.com)
+                    {auth.user.firstName} {auth.user.lastName} (
+                    {auth.user.email})
                     <br />
                     <button type="button" onClick={handleLogout}>
                       Đăng xuất
@@ -107,7 +111,7 @@ function CheckoutsPage() {
                 </FloatingLabel>
 
                 <div className="shipping-form">
-                  <div className="radio-wrapper">
+                  <div className="radio-wrapper content-box-now">
                     <label className="radio-label">
                       <div className="radio-input">
                         <input
@@ -124,7 +128,7 @@ function CheckoutsPage() {
                     </label>
                   </div>
                   {shipping === "delivery" && (
-                    <div className="address-form">
+                    <div className="address-form content-box-now">
                       <FloatingLabel
                         controlId="floatingInputGrid"
                         label="Số nhà"
@@ -167,7 +171,7 @@ function CheckoutsPage() {
                     </div>
                   )}
 
-                  <div className="radio-wrapper">
+                  <div className="radio-wrapper content-box-now">
                     <label className="radio-label">
                       <div className="radio-input">
                         <input
@@ -187,7 +191,7 @@ function CheckoutsPage() {
                   </div>
 
                   {shipping === "at shop" && (
-                    <div className="store-list">
+                    <div className="store-list content-box-now">
                       <span>Không tìm thấy thông tin cửa hàng</span>
                     </div>
                   )}
@@ -237,18 +241,19 @@ function CheckoutsPage() {
                 </table>
               </div>
 
-              <div className="input-group sale-code-input">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Nhập mã giảm giá"
-                  aria-describedby="button-addon2"
-                />
-                <button
-                  className="btn btn-outline-secondary"
-                  type="button"
-                  id="button-addon2"
+              <div className=" sale-code-input">
+                <FloatingLabel
+                  controlId="floatingInputGrid"
+                  label="Mã giảm giá"
+                  className="sale-code"
                 >
+                  <Form.Control
+                    type="text"
+                    placeholder="Mã giảm giá"
+                    style={{ height: "45px" }}
+                  />
+                </FloatingLabel>
+                <button className="btn btn-outline-secondary" type="button">
                   Sử dụng
                 </button>
               </div>
@@ -296,6 +301,19 @@ function CheckoutsPage() {
                     </tr>
                   </tfoot>
                 </table>
+              </div>
+
+              <div
+                className=""
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <button className="btn-pay" onClick={() => router.push("/")}>
+                  Đặt hàng
+                </button>
               </div>
             </div>
           </div>

@@ -139,17 +139,20 @@
         }
 
         .shipping-form {
+            .content-box-now {
+                border-top: 1px solid #d9d9d9;
+            }
+
             .radio-wrapper {
+                border-left: 1px solid #d9d9d9;
+                border-right: 1px solid #d9d9d9;
                 &:first-child {
-                    border: 1px solid #d9d9d9;
                     border-radius: 4px 4px 0 0;
                 }
                 &:last-child {
-                    border: 1px solid #d9d9d9;
                     border-radius: 0 0 4px 4px;
+                    border-bottom: 1px solid #d9d9d9;
                 }
-
-                
 
                 .radio-label {
                     display: flex;
@@ -198,6 +201,13 @@
                 border-left: 1px solid #d9d9d9;
                 border-right: 1px solid #d9d9d9;
                 transition: all 0.3s linear;
+            }
+            .store-list {
+                padding: 12px 8px;
+                border: 1px solid #d9d9d9;
+                border-radius: 0 0 4px 4px;
+                text-align: center;
+                background-color: #f4f4f4;
             }
         }
     }
@@ -270,9 +280,14 @@
     }
 
     .sale-code-input {
+        width: 100%;
+        display: flex;
         padding: 20px 10px;
-
         border-bottom: 1px solid #f4f4f4;
+        .sale-code {
+            width: 80%;
+            padding-right: 10px;
+        }
     }
 
     .total-price {
@@ -322,5 +337,18 @@
                 }
             }
         }
+    }
+}
+
+.btn-pay {
+    padding: 12px 15px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.945);
+    font-weight: 500;
+
+    background-color: #000;
+    border: none;
+    &:hover {
+        color: #fff;
     }
 }

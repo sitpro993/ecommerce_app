@@ -5,7 +5,7 @@ import { DataContext } from "../store/GlobalState";
 import { postData } from "../utils/fecthData";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, FloatingLabel } from "react-bootstrap";
 import ParallaxScrolling from "./HomeComponent/User/ParallaxScrolling";
 
 export default function LoginComponent() {
@@ -83,25 +83,32 @@ export default function LoginComponent() {
               <h1>Đăng nhập</h1>
             </div>
             <Form onSubmit={handleSubmit} className="form-account">
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <FloatingLabel
+                controlId="floatingInput"
+                label="Email"
+                className="mb-3"
+              >
                 <Form.Control
                   type="email"
-                  placeholder="Email"
+                  placeholder="name@example.com"
                   name="email"
                   value={email}
                   onChange={handleChangeInput}
                 />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              </FloatingLabel>
+              <FloatingLabel
+                controlId="floatingInput"
+                label="Mật khẩu"
+                className="mb-3"
+              >
                 <Form.Control
                   type="password"
-                  placeholder="Mật khẩu"
+                  placeholder="name@example.com"
                   name="password"
                   value={password}
                   onChange={handleChangeInput}
                 />
-              </Form.Group>
+              </FloatingLabel>
 
               <Button variant="primary" type="submit">
                 Đăng nhập
