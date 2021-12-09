@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import Head from "next/head";
 
-export default function AdminDashboard() {
+export default function AdminAnalytics() {
   return (
     <>
       <Head>
-        <title>Dashboard - BeeYou</title>
+        <title>Analytics - BeeYou</title>
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
     </>

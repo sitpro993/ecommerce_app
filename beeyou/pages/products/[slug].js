@@ -54,6 +54,19 @@ export default function ProductDetail({ product }) {
         <div className="row product-detail">
           <div className="col-5">
             <div className="details-img-product">
+              <ul className="small-image-product">
+                {product.variant.map((item, index) => (
+                  <li key={index} className="details-thumbnail-item">
+                    <Image
+                      width={78}
+                      height={78}
+                      src={item.img}
+                      alt={item.title}
+                      onClick={() => setIndexVariant(index)}
+                    />
+                  </li>
+                ))}
+              </ul>
               <div className="details-main-img">
                 <Image
                   width={374}

@@ -11,21 +11,21 @@ const ProtectedRoute = ({ children }) => {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
 
-  useEffect(() => {
-    if (isBrowser() && !auth.user && router.pathname.startsWith("/admin"))
-      router.push("/");
-  }, [auth, router]);
+  // useEffect(() => {
+  //   if (isBrowser() && !auth.user && router.pathname.startsWith("/admin"))
+  //     router.push("/");
+  // }, [auth, router]);
 
-  useEffect(() => {
-    if (isBrowser() && auth.user) {
-      if (auth.user.role !== "admin" && router.pathname.startsWith("/admin"))
-        router.push("/");
-    }
-  }, [auth, router]);
+  // useEffect(() => {
+  //   if (isBrowser() && auth.user) {
+  //     if (auth.user.role !== "admin" && router.pathname.startsWith("/admin"))
+  //       router.push("/");
+  //   }
+  // }, [auth, router]);
 
-  if (!auth.user && router.pathname.startsWith("/admin")) {
-    return <Loading />;
-  }
+  // if (!auth.user && router.pathname.startsWith("/admin")) {
+  //   return <Loading />;
+  // }
 
   return children;
 };

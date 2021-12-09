@@ -11,11 +11,11 @@ function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
   return (
     <DataProvider>
-      <ProtectedRoute>
-        <ChangeLayout>
-          <Component {...pageProps} />
-        </ChangeLayout>
-      </ProtectedRoute>
+      {/* <ProtectedRoute> */}
+      <ChangeLayout>
+        <Component {...pageProps} />
+      </ChangeLayout>
+      {/* </ProtectedRoute> */}
     </DataProvider>
   );
 }
