@@ -182,7 +182,7 @@ export const getServerSideProps = async ({ params, query }) => {
   const sort_by = query.sort_by || "title-ascending";
 
   const res = await getData(
-    `collection/${params.slug}?page=${page}&sort_by=${sort_by}`
+    `/collection/${params.slug}?page=${page}&sort_by=${sort_by}`
   );
   // const data = await res.json();
 

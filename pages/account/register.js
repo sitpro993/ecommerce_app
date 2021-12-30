@@ -6,7 +6,6 @@ import { DataContext } from "../../store/GlobalState";
 import { postData } from "../../utils/fecthData";
 import { Form, Button } from "react-bootstrap";
 import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
-import Layout from "../../components/Layout/UserLayout/Layout";
 
 export default function RegisterPage() {
   const initialState = {
@@ -19,7 +18,7 @@ export default function RegisterPage() {
   const [userData, setUserData] = useState(initialState);
   const { firstName, lastName, email, password, cf_password } = userData;
 
-  const [state, dispatch] = useContext(DataContext);
+  const { state, dispatch } = useContext(DataContext);
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -32,11 +31,15 @@ export default function RegisterPage() {
 
     if (errMsg) return dispatch({ type: "NOTIFY", payload: { error: errMsg } });
 
+    dispatch({ type: "NOTIFY", payload: { loading: true } });
+
     dispatch({
       type: "NOTIFY",
       payload: { loading: true },
     });
     const res = await postData("auth/register", userData);
+    if (res.err)
+      return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     return dispatch({
       type: "NOTIFY",
       payload: { success: res.msg },
@@ -63,6 +66,7 @@ export default function RegisterPage() {
                   name="lastName"
                   value={lastName}
                   onChange={handleChangeInput}
+                  autoComplete="false"
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -72,6 +76,7 @@ export default function RegisterPage() {
                   name="firstName"
                   value={firstName}
                   onChange={handleChangeInput}
+                  autoComplete="false"
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -81,6 +86,7 @@ export default function RegisterPage() {
                   name="email"
                   value={email}
                   onChange={handleChangeInput}
+                  autoComplete="false"
                 />
               </Form.Group>
 
@@ -91,6 +97,7 @@ export default function RegisterPage() {
                   name="password"
                   value={password}
                   onChange={handleChangeInput}
+                  autoComplete="false"
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -100,11 +107,12 @@ export default function RegisterPage() {
                   name="cf_password"
                   value={cf_password}
                   onChange={handleChangeInput}
+                  autoComplete="false"
                 />
               </Form.Group>
 
               <Button variant="primary" type="submit">
-                Đăng nhập
+                Đăng ký
               </Button>
               <Link href="/account/signin">
                 <a className="displayBlock">Đăng nhập</a>
