@@ -28,8 +28,7 @@ export default function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errMsg = valid(firstName, lastName, email, password, cf_password);
-
-    if (errMsg) return dispatch({ type: "NOTIFY", payload: { error: errMsg } });
+    dispatch({ type: "NOTIFY", payload: { err: errMsg } });
 
     dispatch({ type: "NOTIFY", payload: { loading: true } });
 
@@ -38,9 +37,8 @@ export default function RegisterPage() {
       payload: { loading: true },
     });
     const res = await postData("auth/register", userData);
-    if (res.err)
-      return dispatch({ type: "NOTIFY", payload: { error: res.err } });
-    return dispatch({
+    if (res.err) return dispatch({ type: "NOTIFY", payload: { err: res.err } });
+    dispatch({
       type: "NOTIFY",
       payload: { success: res.msg },
     });
