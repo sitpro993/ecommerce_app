@@ -7,7 +7,7 @@ export default function TypeaheadCus(props) {
   const handleUploadImage = (e) => {
     props.handleChangeInput({ title, img: e.target.files[0] });
   };
-  console.log(image);
+  // console.log(image);
 
   return (
     <>

@@ -9,45 +9,45 @@ import Cookie, { set } from "js-cookie";
 import { Col, FloatingLabel, Form, Row } from "react-bootstrap";
 
 function CheckoutsPage() {
-  const { state, dispatch } = useContext(DataContext);
-  const { auth, cart } = state;
+  // const { state, dispatch } = useContext(DataContext);
+  // const { auth, cart } = state;
 
-  const [subTotal, setSubTotal] = useState(0);
-  const [shippingPrice, setShippingPrice] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [shipping, setShipping] = useState("delivery");
+  // const [subTotal, setSubTotal] = useState(0);
+  // const [shippingPrice, setShippingPrice] = useState(0);
+  // const [total, setTotal] = useState(0);
+  // const [shipping, setShipping] = useState("delivery");
 
-  const handleLogout = () => {
-    Cookie.remove("refreshtoken", { path: "/api/auth/accessToken" });
-    localStorage.removeItem("firstLogin");
-    dispatch({ type: "AUTH", payload: {} });
-    dispatch({
-      type: "NOTIFY",
-      payload: { success: "Đăng xuất thành công" },
-    });
-  };
+  // const handleLogout = () => {
+  //   Cookie.remove("refreshtoken", { path: "/api/auth/accessToken" });
+  //   localStorage.removeItem("firstLogin");
+  //   dispatch({ type: "AUTH", payload: {} });
+  //   dispatch({
+  //     type: "NOTIFY",
+  //     payload: { success: "Đăng xuất thành công" },
+  //   });
+  // };
 
-  useEffect(() => {
-    const getTotal = () => {
-      const res = cart.reduce((prev, item) => {
-        return prev + item.price * item.quantity;
-      }, 0);
+  // useEffect(() => {
+  //   const getTotal = () => {
+  //     const res = cart.reduce((prev, item) => {
+  //       return prev + item.price * item.quantity;
+  //     }, 0);
 
-      setSubTotal(res);
-    };
+  //     setSubTotal(res);
+  //   };
 
-    getTotal();
-  }, [cart]);
+  //   getTotal();
+  // }, [cart]);
 
-  useEffect(() => {
-    const res = subTotal + shippingPrice;
-    setTotal(res);
-  }, [subTotal, shippingPrice]);
+  // useEffect(() => {
+  //   const res = subTotal + shippingPrice;
+  //   setTotal(res);
+  // }, [subTotal, shippingPrice]);
   //console.log(shipping);
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Thanh toán đơn hàng - BeeYou</title>
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
@@ -83,14 +83,16 @@ function CheckoutsPage() {
                   <div className="logged-in-customer-information-avatar-wrapper">
                     <div className="logged-in-customer-information-avatar gravatar"></div>
                   </div>
-                  <p className="logged-in-customer-information-paragraph">
-                    {auth.user.firstName} {auth.user.lastName} (
-                    {auth.user.email})
-                    <br />
-                    <button type="button" onClick={handleLogout}>
-                      Đăng xuất
-                    </button>
-                  </p>
+                  {auth.use.firstName && (
+                    <p className="logged-in-customer-information-paragraph">
+                      {auth.user.firstName} {auth.user.lastName} (
+                      {auth.user.email})
+                      <br />
+                      <button type="button" onClick={handleLogout}>
+                        Đăng xuất
+                      </button>
+                    </p>
+                  )}
                 </div>
 
                 <FloatingLabel
@@ -316,7 +318,7 @@ function CheckoutsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

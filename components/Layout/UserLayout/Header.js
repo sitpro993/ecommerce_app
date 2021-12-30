@@ -46,7 +46,7 @@ function Header() {
   return (
     <header>
       <div className="wrapper">
-        <nav className="mobie-nav">
+        {/* <nav className="mobie-nav">
           <div className="">
             <button type="button" className="mobile-menu-btn">
               <i className="fa fa-bars" aria-hidden="true"></i>
@@ -68,7 +68,7 @@ function Header() {
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </a>
           </div>
-        </nav>
+        </nav> */}
         <div className="header-info">
           <div className="contact-info">
             <p>

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Head from "next/head";
 import { Typeahead } from "react-bootstrap-typeahead";
 import Form from "react-bootstrap/Form";
 import Test from "../../../components/Test";
@@ -44,148 +45,154 @@ export default function ProductCreate() {
   };
 
   return (
-    <div className="main-create">
-      <Form className="row" onSubmit={handleSubmit}>
-        <div className="col-8">
-          {/* Thông tin chung */}
-          <div className="infor">
-            <div className="title">
-              <span>Thông Tin Chung</span>
-            </div>
-            <div className="create">
-              <p>Tên sản phẩm</p>
-              <div className="form-form">
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Nhập tên sản phẩm"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
+    <>
+      <Head>
+        <title>Create Product - BeeYou</title>
+        <meta name="keywords" content="BeeYou"></meta>
+      </Head>
+      <div className="main-create">
+        <Form className="row" onSubmit={handleSubmit}>
+          <div className="col-8">
+            {/* Thông tin chung */}
+            <div className="infor">
+              <div className="title">
+                <span>Thông Tin Chung</span>
               </div>
-            </div>
-            <div className="create">
-              <p>Đường dẫn (slug)</p>
-              <div className="form-form">
-                <input
-                  type="text"
-                  name="slug"
-                  placeholder="Nhập đường dẫn"
-                  value={slug}
-                  onChange={(e) => setSlug(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="create">
-              <p>Mô tả sản phẩm</p>
-              <div className="form-form">
-                {editorLoaded ? (
-                  <CKEditor
-                    editor={ClassicEditor}
-                    data={description}
-                    onReady={(editor) => {
-                      // You can store the "editor" and use when it is needed.
-                      //console.log("Editor is ready to use!", editor);
-                    }}
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-                      setDescription(data);
-                    }}
-                  />
-                ) : (
-                  <p>Loading...</p>
-                )}
-              </div>
-            </div>
-            <div className="create">
-              <p>Trích dẫn</p>
-              <div className="form-form">
-                <input
-                  type="text"
-                  name="shortDescription"
-                  placeholder="Trích dẫn sản phẩm"
-                  value={shortDescription}
-                  onChange={(e) => setShortDescription(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-          {/* Thông tin chung */}
-          {/* Hình ảnh sản phẩm */}
-          <div className="infor">
-            <div className="title">
-              <span>Biến Thể</span>
-            </div>
-            <Test />
-          </div>
-          {/* Hình ảnh sản phẩm */}
-        </div>
-        <div className="col-4">
-          {/* Nhóm sản phẩm */}
-          <div className="infor">
-            <div className="title">
-              <span>Danh mục sản phẩm</span>
-            </div>
-            <div className="create">
-              <div className="form-form">
-                <input type="text" name="name-field" placeholder="Tìm kiếm" />
-              </div>
-            </div>
-          </div>
-          {/* Nhóm sản phẩm */}
-          {/* Giá sản phẩm */}
-          <div className="infor">
-            <div className="title">
-              <span>Giá Sản Phẩm</span>
-            </div>
-            <div className="price-infor">
-              <div className="price-pay">
-                <p>Giá bán</p>
+              <div className="create">
+                <p>Tên sản phẩm</p>
                 <div className="form-form">
                   <input
-                    type="number"
-                    name="price"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
+                    type="text"
+                    name="title"
+                    placeholder="Nhập tên sản phẩm"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="create">
+                <p>Đường dẫn (slug)</p>
+                <div className="form-form">
+                  <input
+                    type="text"
+                    name="slug"
+                    placeholder="Nhập đường dẫn"
+                    value={slug}
+                    onChange={(e) => setSlug(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="create">
+                <p>Mô tả sản phẩm</p>
+                <div className="form-form">
+                  {editorLoaded ? (
+                    <CKEditor
+                      editor={ClassicEditor}
+                      data={description}
+                      onReady={(editor) => {
+                        // You can store the "editor" and use when it is needed.
+                        //console.log("Editor is ready to use!", editor);
+                      }}
+                      onChange={(event, editor) => {
+                        const data = editor.getData();
+                        setDescription(data);
+                      }}
+                    />
+                  ) : (
+                    <p>Loading...</p>
+                  )}
+                </div>
+              </div>
+              <div className="create">
+                <p>Trích dẫn</p>
+                <div className="form-form">
+                  <input
+                    type="text"
+                    name="shortDescription"
+                    placeholder="Trích dẫn sản phẩm"
+                    value={shortDescription}
+                    onChange={(e) => setShortDescription(e.target.value)}
                   />
                 </div>
               </div>
             </div>
-          </div>
-          {/* Giá sản phẩm */}
-          {/* Biến thể */}
-          <div className="infor">
-            <div className="title">
-              <span>Kích thước</span>
+            {/* Thông tin chung */}
+            {/* Hình ảnh sản phẩm */}
+            <div className="infor">
+              <div className="title">
+                <span>Biến Thể</span>
+              </div>
+              <Test />
             </div>
-            <div className="create">
-              <p>Size</p>
-              <div className="new-product-type">
-                <div className="type-2">
+            {/* Hình ảnh sản phẩm */}
+          </div>
+          <div className="col-4">
+            {/* Nhóm sản phẩm */}
+            <div className="infor">
+              <div className="title">
+                <span>Danh mục sản phẩm</span>
+              </div>
+              <div className="create">
+                <div className="form-form">
+                  <input type="text" name="name-field" placeholder="Tìm kiếm" />
+                </div>
+              </div>
+            </div>
+            {/* Nhóm sản phẩm */}
+            {/* Giá sản phẩm */}
+            <div className="infor">
+              <div className="title">
+                <span>Giá Sản Phẩm</span>
+              </div>
+              <div className="price-infor">
+                <div className="price-pay">
+                  <p>Giá bán</p>
                   <div className="form-form">
-                    <Typeahead
-                      allowNew
-                      id="custom-selections-example"
-                      multiple
-                      newSelectionPrefix="Thêm: "
-                      options={[]}
-                      placeholder="Thêm kích thước"
-                      selected={selectSize}
-                      onChange={setSelectSize}
+                    <input
+                      type="number"
+                      name="price"
+                      value={price}
+                      onChange={(e) => setPrice(e.target.value)}
                     />
                   </div>
                 </div>
               </div>
             </div>
+            {/* Giá sản phẩm */}
+            {/* Biến thể */}
+            <div className="infor">
+              <div className="title">
+                <span>Kích thước</span>
+              </div>
+              <div className="create">
+                <p>Size</p>
+                <div className="new-product-type">
+                  <div className="type-2">
+                    <div className="form-form">
+                      <Typeahead
+                        allowNew
+                        id="custom-selections-example"
+                        multiple
+                        newSelectionPrefix="Thêm: "
+                        options={[]}
+                        placeholder="Thêm kích thước"
+                        selected={selectSize}
+                        onChange={setSelectSize}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Biến thể */}
           </div>
-          {/* Biến thể */}
-        </div>
-        <button className="btn col-2 btn-create" type="submit">
-          <i className="far fa-plus-square"></i>
-          Tạo sản phẩm
-        </button>
-      </Form>
-    </div>
+          <button className="btn col-2 btn-create" type="submit">
+            <i className="far fa-plus-square"></i>
+            Tạo sản phẩm
+          </button>
+        </Form>
+      </div>
+    </>
   );
 }
 

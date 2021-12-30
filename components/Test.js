@@ -10,7 +10,7 @@ export default function TextEditor() {
     setVariant([...variant, tmp]);
   };
 
-  console.log(variant);
+  // console.log(variant);
 
   const onAddBtnClick = (event) => {
     setInputList(
