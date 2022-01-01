@@ -5,7 +5,6 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import CollectionsSlider from "../components/HomeComponent/User/CollectionsSlider";
 import HomeFeaturedProducts from "../components/HomeComponent/User/HomeFeaturedProducts";
 import { Col, Row } from "react-bootstrap";
-import Cookie from "js-cookie";
 export default function HomePage(props) {
   return (
     <>
