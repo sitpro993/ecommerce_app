@@ -20,7 +20,6 @@ export default async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(req.body);
     const user = await AdminUsers.findOne({ email });
     if (!user)
       return res
