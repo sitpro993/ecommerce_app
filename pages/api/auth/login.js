@@ -6,6 +6,7 @@ import {
   createRefreshToken,
 } from "../../../utils/generateToken";
 import bcrypt from "bcryptjs";
+import { cors } from "../../../middleware/config-cors";
 
 connectDB();
 
@@ -19,8 +20,7 @@ export default async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    await cors(req, res);
     const { email, password } = req.body;
     const user = await AdminUsers.findOne({ email });
     if (!user)
