@@ -19,6 +19,8 @@ export default async (req, res) => {
 
 const login = async (req, res) => {
   try {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     const { email, password } = req.body;
     const user = await AdminUsers.findOne({ email });
     if (!user)
