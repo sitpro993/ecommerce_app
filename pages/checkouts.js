@@ -2,52 +2,90 @@ import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import ParallaxScrolling from "../components/HomeComponent/User/ParallaxScrolling";
-import withAuth from "../components/HOCs/withAuth";
+import ParallaxScrolling from "../components/HomeComponent/ParallaxScrolling";
 import { DataContext } from "../store/GlobalState";
-import Cookie, { set } from "js-cookie";
-import { Col, FloatingLabel, Form, Row } from "react-bootstrap";
+import { FloatingLabel, Form } from "react-bootstrap";
+import AddressInput from "../components/AddressInput";
+import { useRouter } from "next/router";
+import { postData } from "../utils/fecthData";
 
 function CheckoutsPage() {
-  // const { state, dispatch } = useContext(DataContext);
-  // const { auth, cart } = state;
+  const { state, dispatch } = useContext(DataContext);
+  const { auth, cart } = state;
 
-  // const [subTotal, setSubTotal] = useState(0);
-  // const [shippingPrice, setShippingPrice] = useState(0);
-  // const [total, setTotal] = useState(0);
-  // const [shipping, setShipping] = useState("delivery");
+  const router = useRouter();
 
-  // const handleLogout = () => {
-  //   Cookie.remove("refreshtoken", { path: "/api/auth/accessToken" });
-  //   localStorage.removeItem("firstLogin");
-  //   dispatch({ type: "AUTH", payload: {} });
-  //   dispatch({
-  //     type: "NOTIFY",
-  //     payload: { success: "Đăng xuất thành công" },
-  //   });
-  // };
+  const [subTotal, setSubTotal] = useState(0);
+  const [shippingPrice, setShippingPrice] = useState(40000);
+  const [total, setTotal] = useState(0);
+  const [shipping, setShipping] = useState("delivery");
+  const [shippingAddress, setShippingAddress] = useState({});
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
 
-  // useEffect(() => {
-  //   const getTotal = () => {
-  //     const res = cart.reduce((prev, item) => {
-  //       return prev + item.price * item.quantity;
-  //     }, 0);
+  useEffect(() => {
+    const getTotal = () => {
+      const res = cart.reduce((prev, item) => {
+        return prev + item.price * item.quantity;
+      }, 0);
 
-  //     setSubTotal(res);
-  //   };
+      setSubTotal(res);
+    };
 
-  //   getTotal();
-  // }, [cart]);
+    getTotal();
+  }, [cart]);
 
-  // useEffect(() => {
-  //   const res = subTotal + shippingPrice;
-  //   setTotal(res);
-  // }, [subTotal, shippingPrice]);
-  //console.log(shipping);
+  useEffect(() => {
+    const res = subTotal + shippingPrice;
+    setTotal(res);
+  }, [subTotal, shippingPrice]);
+
+  const handleSubmit = async () => {
+    console.log({
+      name: name,
+      phone: phone,
+      address: shippingAddress,
+      cart: cart,
+      shippingPrice: shippingPrice,
+      totalPrice: total,
+      deliveryMethod: shipping,
+    });
+
+    if (name && phone && total !== 0) {
+      dispatch({
+        type: "NOTIFY",
+        payload: { loading: true },
+      });
+      const res = await postData(
+        "orders/create",
+        {
+          name: name,
+          phone: phone,
+          address: shippingAddress,
+          cart: cart,
+          shippingPrice: shippingPrice,
+          totalPrice: total,
+          deliveryMethod: shipping,
+        },
+        auth.token
+      );
+
+      if (res.msg) {
+        dispatch({
+          type: "NOTIFY",
+          payload: { success: res.msg },
+        });
+
+        dispatch({ type: "ADD_CART", payload: [] });
+
+        router.push("/");
+      }
+    }
+  };
 
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>Thanh toán đơn hàng - BeeYou</title>
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
@@ -83,16 +121,12 @@ function CheckoutsPage() {
                   <div className="logged-in-customer-information-avatar-wrapper">
                     <div className="logged-in-customer-information-avatar gravatar"></div>
                   </div>
-                  {auth.use.firstName && (
+                  {auth.user ? (
                     <p className="logged-in-customer-information-paragraph">
-                      {auth.user.firstName} {auth.user.lastName} (
-                      {auth.user.email})
-                      <br />
-                      <button type="button" onClick={handleLogout}>
-                        Đăng xuất
-                      </button>
+                      {auth.user.firstName} {auth.user.lastName} <br></br>
+                      {auth.user.email}
                     </p>
-                  )}
+                  ) : null}
                 </div>
 
                 <FloatingLabel
@@ -100,14 +134,24 @@ function CheckoutsPage() {
                   label="Họ và tên"
                   className="mb-3"
                 >
-                  <Form.Control type="text" placeholder="Họ và tên" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Họ và tên"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </FloatingLabel>
                 <FloatingLabel
                   controlId="floatingInput"
                   label="Số điện thoại"
                   className="mb-4"
                 >
-                  <Form.Control type="text" placeholder="Số điện thoại" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Số điện thoại"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
                 </FloatingLabel>
 
                 <div className="shipping-form">
@@ -128,47 +172,7 @@ function CheckoutsPage() {
                     </label>
                   </div>
                   {shipping === "delivery" && (
-                    <div className="address-form content-box-now">
-                      <FloatingLabel
-                        controlId="floatingInputGrid"
-                        label="Số nhà"
-                        className="mb-3"
-                      >
-                        <Form.Control type="text" placeholder="Số nhà" />
-                      </FloatingLabel>
-                      <Row className="g-3">
-                        <Col md>
-                          <FloatingLabel
-                            controlId="floatingInputGrid"
-                            label="Phường/Xã"
-                          >
-                            <Form.Control type="text" placeholder="Phường/Xã" />
-                          </FloatingLabel>
-                        </Col>
-                        <Col md>
-                          <FloatingLabel
-                            controlId="floatingInputGrid"
-                            label="Quận/Huyện"
-                          >
-                            <Form.Control
-                              type="text"
-                              placeholder="Quận/Huyện"
-                            />
-                          </FloatingLabel>
-                        </Col>
-                        <Col md>
-                          <FloatingLabel
-                            controlId="floatingSelectGrid"
-                            label="Thành Phố/Tỉnh"
-                          >
-                            <Form.Control
-                              type="text"
-                              placeholder="Thành Phố/Tỉnh"
-                            />
-                          </FloatingLabel>
-                        </Col>
-                      </Row>
-                    </div>
+                    <AddressInput setShippingAddress={setShippingAddress} />
                   )}
 
                   <div className="radio-wrapper content-box-now">
@@ -181,7 +185,10 @@ function CheckoutsPage() {
                           className="input-radio"
                           value="at shop"
                           checked={shipping === "at shop"}
-                          onChange={(e) => setShipping(e.target.value)}
+                          onChange={(e) => {
+                            setShipping(e.target.value);
+                            setShippingAddress({});
+                          }}
                         />
                       </div>
                       <span className="radio-label-primary">
@@ -311,16 +318,17 @@ function CheckoutsPage() {
                   justifyContent: "flex-end",
                 }}
               >
-                <button className="btn-pay" onClick={() => router.push("/")}>
+                <button className="btn-pay" onClick={handleSubmit}>
                   Đặt hàng
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </>
   );
 }
 
 export default CheckoutsPage;
+// s

@@ -1,19 +1,26 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 import reducers from "./Reducers";
 import { getData } from "../utils/fecthData";
+import Cookies from "js-cookie";
 
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const initialState = { notify: {}, auth: {}, cart: [], modal: [] };
+  const initialState = { notify: {}, auth: {}, cart: [] };
   const [state, dispatch] = useReducer(reducers, initialState);
   const { cart, auth } = state;
 
   useEffect(() => {
     const firstLogin = localStorage.getItem("firstLogin");
+    const refreshToken = Cookies.get("refreshtoken");
+
     if (firstLogin) {
-      getData("auth/accessToken").then((res) => {
-        if (res.err) return localStorage.removeItem("firstLogin");
+      getData("users/accessToken", refreshToken).then((res) => {
+        if (res.err) {
+          localStorage.removeItem("firstLogin");
+          Cookies.remove("refreshtoken", { path: process.env.BASE_URL });
+        }
+
         dispatch({
           type: "AUTH",
           payload: {

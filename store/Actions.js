@@ -69,10 +69,3 @@ export const deleteFromCart = (cart, _id, indexVariant, indexSize) => {
   });
   return { type: "ADD_CART", payload: newData };
 };
-
-export const deleteItem = (data, id, type) => {
-  if (data) {
-    const newData = data.filter((item) => item._id !== id);
-    return { type, payload: newData };
-  }
-};

@@ -3,7 +3,6 @@ import clsx from "clsx";
 
 export default function ScrollOnTop() {
   const [isVisible, setIsVisible] = useState(false);
-
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
       setIsVisible(true);

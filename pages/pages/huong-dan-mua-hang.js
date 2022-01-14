@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
-import Layout from "../../components/Layout/UserLayout/Layout";
+import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
 
 export default function ShoppingGuidePage(props) {
   return (

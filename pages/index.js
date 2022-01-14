@@ -2,8 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import CollectionsSlider from "../components/HomeComponent/User/CollectionsSlider";
-import HomeFeaturedProducts from "../components/HomeComponent/User/HomeFeaturedProducts";
+import CollectionsSlider from "../components/HomeComponent/CollectionsSlider";
+import HomeFeaturedProducts from "../components/HomeComponent/HomeFeaturedProducts";
 import { Col, Row } from "react-bootstrap";
 export default function HomePage(props) {
   return (

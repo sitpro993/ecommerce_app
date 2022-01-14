@@ -3,18 +3,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import { DataProvider } from "../store/GlobalState";
-import ProtectedRoute from "../components/ProtectedRoute";
-import ChangeLayout from "../components/ChangeLayout";
-
+import UserLayout from "../components/Layout/Layout";
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
   return (
     <DataProvider>
-      {/* <ProtectedRoute> */}
-      <ChangeLayout>
+      <UserLayout>
         <Component {...pageProps} />
-      </ChangeLayout>
-      {/* </ProtectedRoute> */}
+      </UserLayout>
     </DataProvider>
   );
 }

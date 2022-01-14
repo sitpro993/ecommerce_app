@@ -1,12 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
+import Image from "next/image";
 import Head from "next/head";
-import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
+import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
 import { DataContext } from "../../store/GlobalState";
 import withAuth from "../../components/HOCs/withAuth";
+import { useRouter } from "next/router";
 
 function ProfilePage() {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
+
+  const router = useRouter();
 
   return (
     <>
@@ -20,58 +24,78 @@ function ProfilePage() {
           <h1>Tài khoản của tôi</h1>
         </div>
         <hr></hr>
-        <div className="row align-items-start">
-          <div className="col">
-            <table className="table">
-              <thead>
-                <tr>
-                  <h3>Thông tin đăng nhập</h3>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Số điện thoại</td>
-                  <td>0867064901</td>
-                  <td>Thay đổi</td>
-                </tr>
-                <tr>
-                  <td>E-mail</td>
-                  <td>sitpro993@gmail.com</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+        {auth.user ? (
+          <div className="row">
+            <div className="col-md-4 mb-3">
+              <div className="card" style={{ height: "100%" }}>
+                <div className="card-body">
+                  <div className="d-flex flex-column align-items-center text-center">
+                    <Image
+                      src="https://res.cloudinary.com/beeyou/image/upload/v1641721299/logo/avatar7_jkzd2h.png"
+                      alt="avatar"
+                      className="rounded-circle"
+                      width={150}
+                      height={150}
+                    />
+                    <div className="mt-3">
+                      <h4>{`${auth.user.lastName} ${auth.user.firstName}`}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-8">
+              <div className="card mb-3">
+                <div className="card-body">
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Tên</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      {auth.user.firstName}
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Họ</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      {auth.user.lastName}
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Số điện thoại</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      {auth.user.phone}
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">E-mail</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      {auth.user.email}
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Địa chỉ</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      {auth.user.address}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="col">
-            <table className="table">
-              <thead>
-                <tr>
-                  <h3>Thông tin cá nhân</h3>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        ) : null}
       </section>
     </>
   );

@@ -1,8 +1,8 @@
 import React from "react";
-import Tabs from "../../MyTabs/Tabs";
-import Panel from "../../MyTabs/Panel";
+import Tabs from "../MyTabs/Tabs";
+import Panel from "../MyTabs/Panel";
 import Link from "next/link";
-import ProductList from "../../ProductComponent/ProductList";
+import ProductList from "../ProductComponent/ProductList";
 
 function HomeFeaturedProducts(props) {
   const product1 = [

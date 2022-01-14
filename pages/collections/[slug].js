@@ -3,14 +3,13 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
-import { getData } from "../../utils/fecthData";
-import ProductList from "../../components/ProductComponent/ProductList";
 import { Accordion, Col, Form, Row } from "react-bootstrap";
-import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
 import ReactPaginate from "react-paginate";
-
+import { getData } from "../../utils/fecthData";
+import ProductList from "../../components/ProductComponent/ProductList";
 import Loading from "../../components/SystemNotifiComponent/Loading";
 import filterSearch from "../../utils/filterSearch";
 
@@ -182,7 +181,7 @@ export const getServerSideProps = async ({ params, query }) => {
   const sort_by = query.sort_by || "title-ascending";
 
   const res = await getData(
-    `/collection/${params.slug}?page=${page}&sort_by=${sort_by}`
+    `collections/${params.slug}?page=${page}&sort_by=${sort_by}`
   );
   // const data = await res.json();
 

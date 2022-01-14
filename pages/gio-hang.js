@@ -4,8 +4,7 @@ import Link from "next/link";
 import { DataContext } from "../store/GlobalState";
 import { Table } from "react-bootstrap";
 import CartItem from "../components/CartComponent/CartItem";
-import ParallaxScrolling from "../components/HomeComponent/User/ParallaxScrolling";
-import Layout from "../components/Layout/UserLayout/Layout";
+import ParallaxScrolling from "../components/HomeComponent/ParallaxScrolling";
 import { useRouter } from "next/router";
 
 export default function CartPage() {
@@ -26,10 +25,6 @@ export default function CartPage() {
 
     getTotal();
   }, [cart]);
-
-  const checkoutHandler = () => {
-    router.push("/checkouts");
-  };
 
   return (
     <>

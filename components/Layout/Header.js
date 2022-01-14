@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Mainmenu from "./Mainmenu";
-import { DataContext } from "../../../store/GlobalState";
+import { DataContext } from "../../store/GlobalState";
 import Cookie from "js-cookie";
 import { Dropdown, Form, Button } from "react-bootstrap";
 
@@ -11,7 +11,7 @@ function Header() {
   const { auth, cart } = state;
 
   const handleLogout = () => {
-    Cookie.remove("refreshtoken", { path: "/api/auth/accessToken" });
+    Cookie.remove("refreshtoken", { path: process.env.BASE_URL });
     localStorage.removeItem("firstLogin");
     localStorage.removeItem("__next__cart__beeyou");
     dispatch({ type: "AUTH", payload: {} });
@@ -28,17 +28,17 @@ function Header() {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Link href="/checkouts" passHref>
+          <Link href="/don-hang-cua-toi" passHref>
             <Dropdown.Item>Thông tin đơn hàng</Dropdown.Item>
           </Link>
           <Link href="/account" passHref>
             <Dropdown.Item>Thông tin tài khoản</Dropdown.Item>
           </Link>
-          <Link href="/" passHref>
+          <Link href="/doi-mat-khau" passHref>
             <Dropdown.Item>Đổi mật khẩu</Dropdown.Item>
           </Link>
 
-          <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
+          <Dropdown.Item onClick={handleLogout}>Đăng xuất</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     );

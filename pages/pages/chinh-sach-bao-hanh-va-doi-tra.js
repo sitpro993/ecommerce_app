@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
-import Layout from "../../components/Layout/UserLayout/Layout";
+import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
+import AddressInput from "../../components/AddressInput";
 
 export default function PolicyArrantyPage(props) {
   return (
@@ -12,7 +12,8 @@ export default function PolicyArrantyPage(props) {
       </Head>
       <ParallaxScrolling></ParallaxScrolling>
       <div>
-        <h1>policy-warranty-and-returns</h1>
+        <h1>Chính Sách Bảo Hành và Đổi Trả</h1>
+        <AddressInput />
       </div>
     </>
   );

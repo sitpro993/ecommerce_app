@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
-import ParallaxScrolling from "../../components/HomeComponent/User/ParallaxScrolling";
+import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
 import { getData } from "../../utils/fecthData";
 import Tabs from "../../components/MyTabs/Tabs";
 import Panel from "../../components/MyTabs/Panel";
@@ -9,7 +9,7 @@ import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
 
 export const getServerSideProps = async ({ params: { slug } }) => {
-  const res = await getData(`product/${slug}`);
+  const res = await getData(`products/${slug}`);
   if (!res.product) {
     return { notFound: true };
   }
@@ -24,7 +24,6 @@ export default function ProductDetail({ product }) {
   const [indexVariant, setIndexVariant] = useState(0);
   const [indexSize, setIndexSize] = useState(product.size.length > 0 ? 0 : -1);
   const [count, setCount] = useState(1);
-
   const handleIncrease = () => {
     let tmp = count + 1;
     setCount(tmp);
