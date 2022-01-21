@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Head from "next/head";
 import { Button, Form } from "react-bootstrap";
 import { DataContext } from "../store/GlobalState";
@@ -13,6 +13,12 @@ export default function ChangePasswordPage() {
   const { auth } = state;
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (!auth.token) {
+      router.push("/account/signin");
+    }
+  }, [auth.token, router]);
 
   const schema = Yup.object({
     password: Yup.string()
@@ -81,7 +87,7 @@ export default function ChangePasswordPage() {
   return (
     <>
       <Head>
-        <title>Chính Sách Bảo Mật - BeeYou</title>
+        <title>Đổi mật khẩu - BeeYou</title>
         <meta name="keywords" content="BeeYou"></meta>
       </Head>
       <ParallaxScrolling></ParallaxScrolling>

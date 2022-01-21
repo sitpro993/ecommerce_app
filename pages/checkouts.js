@@ -15,6 +15,18 @@ function CheckoutsPage() {
 
   const router = useRouter();
 
+  useEffect(() => {
+    if (!auth.token) {
+      router.push("/account/signin");
+    }
+  }, [auth.token, router]);
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      router.push("/gio-hang");
+    }
+  }, [cart, router]);
+
   const [subTotal, setSubTotal] = useState(0);
   const [shippingPrice, setShippingPrice] = useState(40000);
   const [total, setTotal] = useState(0);

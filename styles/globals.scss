@@ -254,6 +254,7 @@ a {
   z-index: 99999;
   animation: slideInLeft ease 1s, fadeInRight linear 1s 3s forwards;
   .toast__msg {
+    font-size: 14px;
     margin: 0;
     color: #fff;
     font-weight: bold;
@@ -422,4 +423,37 @@ a {
       }
     }
   }
+}
+
+//404
+
+.gif {
+  display: flex;
+  justify-content: center;
+}
+
+.pagenotfound-content {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.pagenotfound-content .main-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+p {
+  font-size: 1.3rem;
+  padding: 0.7rem 0;
+}
+
+.btn-404 {
+  padding: 1rem;
+  border-radius: 15px;
+  font-size: 14px;
+  outline: none;
+  border: none;
+  background: #333333;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
 }

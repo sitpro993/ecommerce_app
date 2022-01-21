@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { DataContext } from "../store/GlobalState";
 import ParallaxScrolling from "../components/HomeComponent/ParallaxScrolling";
 import { Accordion } from "react-bootstrap";
@@ -13,6 +14,13 @@ export default function MyOrders() {
   const { auth, cart } = state;
   const [orders, setOrders] = useState([{}]);
 
+  const router = useRouter();
+  useEffect(() => {
+    if (!auth.token) {
+      router.push("/account/signin");
+    }
+  }, [auth.token, router]);
+
   useEffect(() => {
     const getOrders = async () => {
       const data = await getData("users/orders", auth.token);
@@ -22,6 +30,7 @@ export default function MyOrders() {
       getOrders();
     }
   }, [auth.token]);
+
   return (
     <>
       <Head>

@@ -3,7 +3,6 @@ import Image from "next/image";
 import Head from "next/head";
 import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
 import { DataContext } from "../../store/GlobalState";
-import withAuth from "../../components/HOCs/withAuth";
 import { useRouter } from "next/router";
 
 function ProfilePage() {
@@ -11,6 +10,12 @@ function ProfilePage() {
   const { auth } = state;
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (!auth.token) {
+      router.push("/account/signin");
+    }
+  }, [auth.token, router]);
 
   return (
     <>
@@ -101,4 +106,4 @@ function ProfilePage() {
   );
 }
 
-export default withAuth(ProfilePage);
+export default ProfilePage;

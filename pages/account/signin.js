@@ -75,7 +75,7 @@ export default function SigninPage() {
 
   useEffect(() => {
     if (Object.keys(auth).length !== 0) {
-      router.push("/");
+      router.back();
     }
   }, [auth, router]);
 
