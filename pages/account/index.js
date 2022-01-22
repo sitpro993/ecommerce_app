@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
