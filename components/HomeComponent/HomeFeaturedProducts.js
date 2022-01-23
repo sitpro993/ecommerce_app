@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Tabs from "../MyTabs/Tabs";
 import Panel from "../MyTabs/Panel";
 import Link from "next/link";
 import ProductList from "../ProductComponent/ProductList";
+import { getData } from "../../utils/fecthData";
 
 function HomeFeaturedProducts(props) {
+  const [hotProducts, setHotProducts] = useState([]);
+  useEffect(() => {
+    const getHotList = async () => {
+      const res = await getData(`products/hot?limit=8`);
+      setHotProducts(res);
+    };
+    getHotList();
+  }, []);
+
+  console.log(hotProducts);
+
   const product1 = [
     {
       _id: "61895e928b3104b83c9e47ba",
@@ -41,14 +53,19 @@ function HomeFeaturedProducts(props) {
           classSelected="featured-tab-panel-selected"
         >
           <Panel title="Sản phẩm nổi bật">
-            <ProductList products={product1}></ProductList>
+            {hotProducts.length > 0 && (
+              <ProductList products={hotProducts}></ProductList>
+            )}
 
-            <Link href="/collections/hot-products">
+            <Link href="/collections/top-ban-chay">
               <a className="btnViewMore">Xem tất cả sản phẩm</a>
             </Link>
           </Panel>
-          <Panel title="Sản phẩm giá nóng">
-            <ProductList products={product1}></ProductList>
+          <Panel title="Sản phẩm mới bán">
+            {hotProducts.length > 0 && (
+              <ProductList products={hotProducts}></ProductList>
+            )}
+
             <Link href="/collections/onsale">
               <a className="btnViewMore">Xem tất cả sản phẩm</a>
             </Link>

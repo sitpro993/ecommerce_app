@@ -210,7 +210,7 @@ export default function RegisterPage() {
                     </Form.Floating>
                   </Form.Group>
                   <Button variant="primary" type="submit">
-                    Đăng ký
+                    Thay đổi
                   </Button>
                   <Link href="/account/signin">
                     <a className="displayBlock">Đăng nhập</a>
