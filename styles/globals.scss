@@ -463,4 +463,48 @@ p {
 }
 
 
+//// css order
 
+
+//css header order
+.wrapper{
+  .col-information-order{
+      margin-left: 0px;
+      margin-right: 0px;
+      
+        div{
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-left: 1px;
+          text-align: center;
+          font-weight: bold;
+        }
+        .col-left{
+          margin-left: -4.5px;
+        }
+        
+  }
+  .accordion-item{
+    .information-order{
+      text-align: center;
+    }
+    .col-status{
+      color: #ffc021;
+    }
+  }
+}
+
+//css body order details 
+.details-order{
+  .details-order-header{
+    margin-bottom: 13px;
+    span{
+      font-weight: 600;
+      line-height: 2;
+    }
+  }
+  .table-details-product-order{
+      margin-top: 25px;
+      text-align: center;
+  }
+}
