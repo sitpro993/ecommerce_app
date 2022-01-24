@@ -12,6 +12,7 @@ import { getData } from "../../utils/fecthData";
 import ProductList from "../../components/ProductComponent/ProductList";
 import Loading from "../../components/SystemNotifiComponent/Loading";
 import filterSearch from "../../utils/filterSearch";
+import ProductAccordion from "../../components/ProductComponent/ProductAccordion";
 
 function CollectionPage(props) {
   const [filter, setFilter] = useState("title-ascending");
@@ -55,49 +56,7 @@ function CollectionPage(props) {
         <div className="wrapper">
           <Row>
             <Col xs={3}>
-              <div className="sidebar-container">
-                <Accordion defaultActiveKey="1" flush>
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header className="sidebar-title-2">
-                      Sản phẩm nổi bật
-                    </Accordion.Header>
-                    <Accordion.Body className="card-product">
-                      <Link href="/products/op-lung-animal-103">
-                        <a className="sidebar-product-item">
-                          <Image
-                            width={65}
-                            height={65}
-                            src="/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png"
-                            alt="BeeYou - Thời trang Chất"
-                          />
-                          <div className="sidebar-product-content">
-                            <p>Noi dung</p>
-                            <span className="sidebar-product-price">
-                              129.000d
-                            </span>
-                          </div>
-                        </a>
-                      </Link>
-                      <Link href="/products/op-lung-animal-103">
-                        <a className="sidebar-product-item">
-                          <Image
-                            width={65}
-                            height={65}
-                            src="/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png"
-                            alt="BeeYou - Thời trang Chất"
-                          />
-                          <div className="sidebar-product-content">
-                            <p>Noi dung</p>
-                            <span className="sidebar-product-price">
-                              129.000d
-                            </span>
-                          </div>
-                        </a>
-                      </Link>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
-              </div>
+              <ProductAccordion />
             </Col>
             <Col>
               <div className="collection-header">

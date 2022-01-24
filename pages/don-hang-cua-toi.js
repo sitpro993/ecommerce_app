@@ -4,10 +4,11 @@ import { useRouter } from "next/router";
 import { DataContext } from "../store/GlobalState";
 import ParallaxScrolling from "../components/HomeComponent/ParallaxScrolling";
 import { Accordion } from "react-bootstrap";
-import MyOrderItemHeader from "../components/MyOrderItemHeader";
-import MyOrderItemBody from "../components/MyOrderItemBody";
+import MyOrderItemHeader from "../components/OrderComponent/MyOrderItemHeader";
 import { getData } from "../utils/fecthData";
 import { useState } from "react";
+import MyOrderItemBodyMemo from "../components/OrderComponent/MyOrderItemBody";
+import Link from "next/link";
 
 export default function MyOrders() {
   const { state, dispatch } = useContext(DataContext);
@@ -22,16 +23,21 @@ export default function MyOrders() {
   }, [auth.token, router]);
 
   useEffect(() => {
+    let loading = true;
     const getOrders = async () => {
       const data = await getData("users/orders", auth.token);
       setOrders(data);
-
     };
-    if (auth.token) {
-      getOrders();
+    if (loading) {
+      if (auth.token) {
+        getOrders();
+      }
     }
+    return () => {
+      loading = false;
+    };
   }, [auth.token]);
-  console.log(orders);
+
   return (
     <>
       <Head>
@@ -61,12 +67,17 @@ export default function MyOrders() {
                   <MyOrderItemHeader order={order} index={index + 1} />
                 </Accordion.Header>
                 <Accordion.Body>
-                  <MyOrderItemBody order={order} />
+                  <MyOrderItemBodyMemo order={order} />
                 </Accordion.Body>
               </Accordion.Item>
             ))
           ) : (
-            <p>Tài khoản bạn chưa có đơn hàng nào. Đi mua hàng </p>
+            <p>
+              Tài khoản bạn chưa có đơn hàng nào.{" "}
+              <Link href="/">
+                <a>Đi mua hàng nào....</a>
+              </Link>{" "}
+            </p>
           )}
         </Accordion>
       </section>

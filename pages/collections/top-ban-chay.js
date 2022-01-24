@@ -8,6 +8,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
 import { getData } from "../../utils/fecthData";
 import ProductList from "../../components/ProductComponent/ProductList";
+import ProductAccordion from "../../components/ProductComponent/ProductAccordion";
 
 function hotProduct(props) {
   return props.collection ? (
@@ -21,53 +22,11 @@ function hotProduct(props) {
         <div className="wrapper">
           <Row>
             <Col xs={3}>
-              <div className="sidebar-container">
-                <Accordion defaultActiveKey="1" flush>
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header className="sidebar-title-2">
-                      Sản phẩm nổi bật
-                    </Accordion.Header>
-                    <Accordion.Body className="card-product">
-                      <Link href="/products/op-lung-animal-103">
-                        <a className="sidebar-product-item">
-                          <Image
-                            width={65}
-                            height={65}
-                            src="/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png"
-                            alt="BeeYou - Thời trang Chất"
-                          />
-                          <div className="sidebar-product-content">
-                            <p>Noi dung</p>
-                            <span className="sidebar-product-price">
-                              129.000d
-                            </span>
-                          </div>
-                        </a>
-                      </Link>
-                      <Link href="/products/op-lung-animal-103">
-                        <a className="sidebar-product-item">
-                          <Image
-                            width={65}
-                            height={65}
-                            src="/images/animal_06-1_b9e6808ddc2f4087bd00420a30458efe_large.png"
-                            alt="BeeYou - Thời trang Chất"
-                          />
-                          <div className="sidebar-product-content">
-                            <p>Noi dung</p>
-                            <span className="sidebar-product-price">
-                              129.000d
-                            </span>
-                          </div>
-                        </a>
-                      </Link>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
-              </div>
+              <ProductAccordion />
             </Col>
             <Col>
               <div className="collection-header">
-                <h1>{props.collection.title}</h1>
+                <h1>Top bán chạy</h1>
                 <p>
                   Hơn 10.000 mẫu thiết kế từ hàng trăm Designer toàn quốc, với
                   chất liệu bền đẹp, tốt nhất trên thị trường, hình ảnh in siêu

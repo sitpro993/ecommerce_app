@@ -34,7 +34,6 @@ export default function ProductDetail({ product }) {
   };
 
   const handleAddToCart = () => {
-    //console.log(count, indexVariant, indexSize);
     dispatch(addToCart(product, cart, count, indexVariant, indexSize));
     dispatch({
       type: "NOTIFY",

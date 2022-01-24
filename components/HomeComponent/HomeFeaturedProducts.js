@@ -7,6 +7,7 @@ import { getData } from "../../utils/fecthData";
 
 function HomeFeaturedProducts(props) {
   const [hotProducts, setHotProducts] = useState([]);
+  const [newProducts, setNewProducts] = useState([]);
   useEffect(() => {
     const getHotList = async () => {
       const res = await getData(`products/hot?limit=8`);
@@ -15,32 +16,13 @@ function HomeFeaturedProducts(props) {
     getHotList();
   }, []);
 
-  console.log(hotProducts);
-
-  const product1 = [
-    {
-      _id: "61895e928b3104b83c9e47ba",
-
-      title: "Túi hoa",
-      slug: "op-lung-animal-103",
-      price: 120000,
-      description: "Ốp lưng dẻo, tráng gương, uv in siêu sắc nét",
-      variant: [
-        {
-          title: "iphone XS Max",
-          img: "https://res.cloudinary.com/beeyou/image/upload/v1636734594/beecase/%E1%BB%90P%20L%C6%AFNG%20ANIMAL/upload_e5eb4f9b789d4418a02909ba3b87b16c_large_wardtj.jpg",
-        },
-        {
-          title: " iphone 7",
-          img: "https://res.cloudinary.com/beeyou/image/upload/v1636734594/beecase/%E1%BB%90P%20L%C6%AFNG%20ANIMAL/upload_46e17cac7eaf49de9dc13e73af999dce_large_q9xvjx.jpg",
-        },
-      ],
-      size: ["X", "XL", "L", "S"],
-      category: ["BeeCase", "Ốp lưng animal", "Ốp lưng nam"],
-      checked: true,
-      sold: 10,
-    },
-  ];
+  useEffect(() => {
+    const getHotList = async () => {
+      const res = await getData(`products/newProduct?limit=8`);
+      setNewProducts(res);
+    };
+    getHotList();
+  }, []);
 
   return (
     <section className="home-featured paddingTop30">
@@ -56,19 +38,21 @@ function HomeFeaturedProducts(props) {
             {hotProducts.length > 0 && (
               <ProductList products={hotProducts}></ProductList>
             )}
-
-            <Link href="/collections/top-ban-chay">
-              <a className="btnViewMore">Xem tất cả sản phẩm</a>
-            </Link>
+            <div style={{ textAlign: "center" }}>
+              <Link href="/collections/top-ban-chay">
+                <a className="btnViewMore">Xem tất cả sản phẩm</a>
+              </Link>
+            </div>
           </Panel>
           <Panel title="Sản phẩm mới bán">
             {hotProducts.length > 0 && (
-              <ProductList products={hotProducts}></ProductList>
+              <ProductList products={newProducts}></ProductList>
             )}
-
-            <Link href="/collections/onsale">
-              <a className="btnViewMore">Xem tất cả sản phẩm</a>
-            </Link>
+            <div style={{ textAlign: "center" }}>
+              <Link href="/collections/san-pham-moi">
+                <a className="btnViewMore">Xem tất cả sản phẩm</a>
+              </Link>
+            </div>
           </Panel>
         </Tabs>
       </div>

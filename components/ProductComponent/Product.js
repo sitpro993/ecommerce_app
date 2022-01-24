@@ -55,7 +55,7 @@ function Product({ product }) {
               <i className="fa fa-cart-plus" aria-hidden="true"></i>
             </button>
           </div>
-          <div className="discount-tag">-7%</div>
+          {/* <div className="discount-tag">-7%</div> */}
         </div>
         <div className="product-title">
           <Link href={`/products/${product.slug}`}>

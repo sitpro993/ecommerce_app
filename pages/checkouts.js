@@ -32,8 +32,10 @@ function CheckoutsPage() {
   const [total, setTotal] = useState(0);
   const [shipping, setShipping] = useState("delivery");
   const [shippingAddress, setShippingAddress] = useState({});
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [name, setName] = useState(
+    `${auth.user.lastName} ${auth.user.firstName}`
+  );
+  const [phone, setPhone] = useState(auth.user.phone);
 
   useEffect(() => {
     const getTotal = () => {
@@ -53,16 +55,6 @@ function CheckoutsPage() {
   }, [subTotal, shippingPrice]);
 
   const handleSubmit = async () => {
-    console.log({
-      name: name,
-      phone: phone,
-      address: shippingAddress,
-      cart: cart,
-      shippingPrice: shippingPrice,
-      totalPrice: total,
-      deliveryMethod: shipping,
-    });
-
     if (name && phone && total !== 0) {
       dispatch({
         type: "NOTIFY",
@@ -135,7 +127,8 @@ function CheckoutsPage() {
                   </div>
                   {auth.user ? (
                     <p className="logged-in-customer-information-paragraph">
-                      {auth.user.firstName} {auth.user.lastName} <br></br>
+                      {auth.user.lastName} {auth.user.firstName}
+                      <br></br>
                       {auth.user.email}
                     </p>
                   ) : null}

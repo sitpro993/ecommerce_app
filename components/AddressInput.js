@@ -3,13 +3,6 @@ import { Col, Form, Row } from "react-bootstrap";
 import { Typeahead } from "react-bootstrap-typeahead";
 
 export default function AddressInput({ setShippingAddress }) {
-  const initialState = {
-    apartmentNumber: "",
-    ward: "",
-    district: "",
-    province: "",
-  };
-  const [address, setAddress] = useState(initialState);
   const [apartmentNumber, setApartmentNumber] = useState("");
   const [province, setProvince] = useState([]);
   const [provinceList, setProvinceList] = useState([]);
