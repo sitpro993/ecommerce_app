@@ -32,10 +32,8 @@ function CheckoutsPage() {
   const [total, setTotal] = useState(0);
   const [shipping, setShipping] = useState("delivery");
   const [shippingAddress, setShippingAddress] = useState({});
-  const [name, setName] = useState(
-    `${auth.user.lastName} ${auth.user.firstName}`
-  );
-  const [phone, setPhone] = useState(auth.user.phone);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
 
   useEffect(() => {
     const getTotal = () => {
