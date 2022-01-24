@@ -42,7 +42,7 @@ function ProfilePage() {
     // if (!file)
     //   return dispatch({
     //     type: "NOTIFY",
-    //     payload: { error: "File does not exist." },
+    //     payload: { err: "File does not exist." },
     //   });
     // if (
     //   file.type !== "image/jpeg" &&
@@ -52,7 +52,7 @@ function ProfilePage() {
     //   //1mb
     //   return dispatch({
     //     type: "NOTIFY",
-    //     payload: { error: "Đây không phải tệp hình ảnh" },
+    //     payload: { err: "Đây không phải tệp hình ảnh" },
     //   });
     // setAvatar({ ...data, avatar: file });
   };
@@ -70,7 +70,7 @@ function ProfilePage() {
 
     patchData("users/profile/edit", userData, auth.token).then((res) => {
       if (res.err)
-        return dispatch({ type: "NOTIFY", payload: { error: res.err } });
+        return dispatch({ type: "NOTIFY", payload: { err: res.err } });
 
       dispatch({
         type: "AUTH",
