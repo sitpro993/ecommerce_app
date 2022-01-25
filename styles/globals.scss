@@ -7,6 +7,7 @@
 @import "./account.scss";
 @import "./cart.scss";
 @import "./footer.scss";
+@import "./support.scss";
 
 * {
   box-sizing: border-box;
@@ -241,76 +242,6 @@ p {
     width: 30px;
   }
 }
-//toast
-
-.my-toast {
-  position: fixed;
-  top: 5px;
-  right: 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 200px;
-  max-width: 300px;
-  opacity: 0.8;
-  border-radius: 2px;
-  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
-  z-index: 99999;
-  animation: slideInLeft ease 1s, fadeInRight linear 1s 3s forwards;
-  .toast__msg {
-    font-size: 14px;
-    margin: 0;
-    color: #fff;
-    font-weight: bold;
-  }
-  .toast__icon,
-  .toast__close {
-    color: #fff;
-    padding: 0 16px;
-  }
-
-  .toast__close {
-    font-size: 20px;
-    cursor: pointer;
-  }
-}
-
-.toast--success {
-  background-color: #47d764;
-}
-
-.toast--info {
-  background-color: #4f99ee;
-}
-
-.toast--warning {
-  background-color: #ffc021;
-}
-
-.toast--error {
-  background-color: #f44336;
-}
-
-.toast + .toast {
-  margin-top: 24px;
-}
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(calc(100% + 32px));
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  to {
-    opacity: 0;
-  }
-}
 
 ///loading
 .loading {
@@ -462,49 +393,44 @@ p {
   cursor: pointer;
 }
 
-
-//// css order
-
-
 //css header order
-.wrapper{
-  .col-information-order{
-      margin-left: 0px;
-      margin-right: 0px;
-      
-        div{
-          margin-top: 20px;
-          margin-bottom: 20px;
-          margin-left: 1px;
-          text-align: center;
-          font-weight: bold;
-        }
-        .col-left{
-          margin-left: -4.5px;
-        }
-        
+.wrapper {
+  .col-information-order {
+    margin-left: 0px;
+    margin-right: 0px;
+
+    div {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      margin-left: 1px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .col-left {
+      margin-left: -4.5px;
+    }
   }
-  .accordion-item{
-    .information-order{
+  .accordion-item {
+    .information-order {
       text-align: center;
     }
-    .col-status{
+    .col-status {
       color: #ffc021;
     }
   }
 }
 
-//css body order details 
-.details-order{
-  .details-order-header{
+//css body order details
+.details-order {
+  .details-order-header {
     margin-bottom: 13px;
-    span{
+    span {
       font-weight: 600;
       line-height: 2;
     }
   }
-  .table-details-product-order{
-      margin-top: 25px;
-      text-align: center;
+  .table-details-product-order {
+    margin-top: 25px;
+    text-align: center;
   }
 }

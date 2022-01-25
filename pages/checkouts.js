@@ -8,6 +8,7 @@ import { FloatingLabel, Form } from "react-bootstrap";
 import AddressInput from "../components/AddressInput";
 import { useRouter } from "next/router";
 import { postData } from "../utils/fecthData";
+import { toast } from "react-toastify";
 
 function CheckoutsPage() {
   const { state, dispatch } = useContext(DataContext);
@@ -75,7 +76,17 @@ function CheckoutsPage() {
       if (res.msg) {
         dispatch({
           type: "NOTIFY",
-          payload: { success: res.msg },
+          payload: {},
+        });
+        toast.success(res.msg, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
         });
 
         dispatch({ type: "ADD_CART", payload: [] });

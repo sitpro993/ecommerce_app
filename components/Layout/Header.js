@@ -5,6 +5,7 @@ import Mainmenu from "./Mainmenu";
 import { DataContext } from "../../store/GlobalState";
 import Cookie from "js-cookie";
 import { Dropdown, Form, Button } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 function Header() {
   const { state, dispatch } = useContext(DataContext);
@@ -15,7 +16,17 @@ function Header() {
     localStorage.removeItem("firstLogin");
     localStorage.removeItem("__next__cart__beeyou");
     dispatch({ type: "AUTH", payload: {} });
-    dispatch({ type: "NOTIFY", payload: { success: "Đăng xuất thành công" } });
+
+    toast.success("Đã đăng xuất", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     dispatch({ type: "ADD_CART", payload: [] });
   };
 
@@ -90,11 +101,10 @@ function Header() {
             <Link href="/">
               <a>
                 <Image
-                  src="https://res.cloudinary.com/beeyou/image/upload/v1635431347/logo/logo_q5eftl.webp"
-                  alt="BeeYou - Thời trang Chất"
                   width={80}
                   height={80}
-                  layout="fixed"
+                  src="https://res.cloudinary.com/beeyou/image/upload/v1635431347/logo/logo_q5eftl.webp"
+                  alt=""
                 />
               </a>
             </Link>

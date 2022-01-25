@@ -21,9 +21,9 @@ export default function ProductAccordion() {
           </Accordion.Header>
           <Accordion.Body className="card-product">
             {hotProducts.length > 0 &&
-              hotProducts.map((product) => (
+              hotProducts.map((product, index) => (
                 <>
-                  <Link href={`/products/${product.slug}`}>
+                  <Link href={`/products/${product.slug}`} key={index}>
                     <a className="sidebar-product-item">
                       <Image
                         width={65}

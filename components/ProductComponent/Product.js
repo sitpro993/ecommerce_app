@@ -4,6 +4,7 @@ import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import ProductPopup from "./ProductPopup";
+import { toast } from "react-toastify";
 
 function Product({ product }) {
   const { state, dispatch } = useContext(DataContext);
@@ -13,9 +14,16 @@ function Product({ product }) {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product, cart, 1, 0, product.size.length > 0 ? 0 : -1));
-    dispatch({
-      type: "NOTIFY",
-      payload: { success: "Đã thêm vào giỏ hàng" },
+
+    toast.success("Đã thêm vào giỏ hàng", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
   };
 

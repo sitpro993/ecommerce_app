@@ -8,6 +8,7 @@ import { DataContext } from "../../store/GlobalState";
 import { postData } from "../../utils/fecthData";
 import { Form, Button } from "react-bootstrap";
 import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
+import { toast } from "react-toastify";
 
 export default function RegisterPage() {
   const { state, dispatch } = useContext(DataContext);
@@ -53,12 +54,32 @@ export default function RegisterPage() {
       resetForm({
         values: { ...values, email: "", password: "", cf_password: "" },
       });
-      return dispatch({ type: "NOTIFY", payload: { err: res.err } });
+      dispatch({ type: "NOTIFY", payload: {} });
+      return toast.error(res.err, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
 
     dispatch({
       type: "NOTIFY",
-      payload: { success: res.msg },
+      payload: {},
+    });
+    toast.success(res.msg, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
 
     router.push("/account/signin");
@@ -210,7 +231,7 @@ export default function RegisterPage() {
                     </Form.Floating>
                   </Form.Group>
                   <Button variant="primary" type="submit">
-                    Thay đổi
+                    Đăng ký
                   </Button>
                   <Link href="/account/signin">
                     <a className="displayBlock">Đăng nhập</a>

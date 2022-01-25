@@ -20,6 +20,7 @@ export const addToCart = (product, cart, quantity, indexVariant, indexSize) => {
     };
   } else {
     cart[check].quantity += quantity;
+
     return {
       type: "ADD_CART",
       payload: cart,
@@ -67,5 +68,6 @@ export const deleteFromCart = (cart, _id, indexVariant, indexSize) => {
   const newData = cart.filter(function (value, index, arr) {
     return index !== check;
   });
+
   return { type: "ADD_CART", payload: newData };
 };

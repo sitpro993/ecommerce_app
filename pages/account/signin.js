@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import { DataContext } from "../../store/GlobalState";
 import { postData } from "../../utils/fecthData";
 import ParallaxScrolling from "../../components/HomeComponent/ParallaxScrolling";
+import { toast } from "react-toastify";
 
 export default function SigninPage() {
   const { state, dispatch } = useContext(DataContext);
@@ -39,22 +40,52 @@ export default function SigninPage() {
 
     if (res.errCode === 1) {
       resetForm({ values: { email: "", password: "" } });
-      return dispatch({
+      dispatch({
         type: "NOTIFY",
-        payload: { err: res.err },
+        payload: {},
+      });
+      return toast.error(res.err, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
       });
     }
     if (res.errCode === 2) {
       resetForm({ values: { ...values, password: "" } });
-      return dispatch({
+      dispatch({
         type: "NOTIFY",
-        payload: { err: res.err },
+        payload: {},
+      });
+      return toast.error(res.err, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
       });
     }
 
     dispatch({
       type: "NOTIFY",
-      payload: { success: res.msg },
+      payload: {},
+    });
+    toast.success(res.msg, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
 
     dispatch({
@@ -75,7 +106,7 @@ export default function SigninPage() {
 
   useEffect(() => {
     if (Object.keys(auth).length !== 0) {
-      router.back();
+      router.push("/");
     }
   }, [auth, router]);
 

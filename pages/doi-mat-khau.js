@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { patchData } from "../utils/fecthData";
 import Cookie from "js-cookie";
 import ParallaxScrolling from "../components/HomeComponent/ParallaxScrolling";
+import { toast } from "react-toastify";
 export default function ChangePasswordPage() {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
@@ -68,16 +69,36 @@ export default function ChangePasswordPage() {
       resetForm({
         values: { password: "", newPassword: "", cf_newPassword: "" },
       });
-      return dispatch({
+      dispatch({
         type: "NOTIFY",
-        payload: { err: res.err },
+        payload: {},
+      });
+      return toast.error(res.err, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
       });
     }
 
     if (res.msg) {
       dispatch({
         type: "NOTIFY",
-        payload: { success: res.msg },
+        payload: {},
+      });
+      toast.success(res.msg, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
       });
       handleLogout();
       router.push("/account/signin");

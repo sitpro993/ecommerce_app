@@ -8,6 +8,7 @@ import { Button, Form } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { patchData } from "../../utils/fecthData";
+import { toast } from "react-toastify";
 
 function ProfilePage() {
   const { state, dispatch } = useContext(DataContext);
@@ -69,9 +70,21 @@ function ProfilePage() {
     });
 
     patchData("users/profile/edit", userData, auth.token).then((res) => {
-      if (res.err)
-        return dispatch({ type: "NOTIFY", payload: { err: res.err } });
+      if (res.err) {
+        dispatch({ type: "NOTIFY", payload: {} });
+        return toast.error(res.err, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
 
+      dispatch({ type: "NOTIFY", payload: {} });
       dispatch({
         type: "AUTH",
         payload: {
@@ -85,7 +98,16 @@ function ProfilePage() {
           },
         },
       });
-      return dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+      return toast.success(res.msg, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     });
   };
 

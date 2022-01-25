@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { decrease, deleteFromCart, increase } from "../../store/Actions";
 import { Button, Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 export default function CartItem({ item, dispatch, cart }) {
   const [show, setShow] = useState(false);
@@ -11,11 +12,18 @@ export default function CartItem({ item, dispatch, cart }) {
   const handleShow = () => setShow(true);
 
   const handleDeleteFromCart = () => {
-    dispatch({
-      type: "NOTIFY",
-      payload: { success: "Đã xóa khỏi giỏ hàng" },
-    });
     dispatch(deleteFromCart(cart, item._id, item.indexVariant, item.indexSize));
+
+    toast.success("Đã xóa khỏi giỏ hàng", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     handleClose();
   };
 

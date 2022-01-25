@@ -4,6 +4,7 @@ import Link from "next/link";
 import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
 import { Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 function ProductPopup({ product, onHide, show }) {
   const { state, dispatch } = useContext(DataContext);
@@ -23,9 +24,15 @@ function ProductPopup({ product, onHide, show }) {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product, cart, count, indexVariant, indexSize));
-    dispatch({
-      type: "NOTIFY",
-      payload: { success: "Đã thêm vào giỏ hàng" },
+    toast.success("Đã thêm vào giỏ hàng", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
     onHide();
   };
@@ -51,14 +58,7 @@ function ProductPopup({ product, onHide, show }) {
           <div className="row">
             <div className="col-6">
               <div className="product-img">
-                <div className="main-product-img">
-                  <Image
-                    width={374}
-                    height={374}
-                    src={product.variant[indexVariant].img}
-                    alt=""
-                  />
-                </div>
+                <div className="main-product-img"></div>
                 <ul className="small-image-product">
                   {product.variant.map((item, index) => (
                     <li key={index} className="details-thumbnail-item">

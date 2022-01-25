@@ -7,6 +7,7 @@ import Tabs from "../../components/MyTabs/Tabs";
 import Panel from "../../components/MyTabs/Panel";
 import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
+import { toast } from "react-toastify";
 
 export const getServerSideProps = async ({ params: { slug } }) => {
   const res = await getData(`products/${slug}`);
@@ -35,9 +36,16 @@ export default function ProductDetail({ product }) {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product, cart, count, indexVariant, indexSize));
-    dispatch({
-      type: "NOTIFY",
-      payload: { success: "Đã thêm vào giỏ hàng" },
+
+    toast.success("Đã thêm vào giỏ hàng", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
   };
 
