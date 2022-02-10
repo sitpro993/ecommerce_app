@@ -41,7 +41,7 @@ export default function CollectionsSlider() {
   };
   const imgs = [
     {
-      file: "https://res.cloudinary.com/beeyou/image/upload/v1636945795/beecase/beecase_6ae43e6632cb4ce18d0972c782f7edd5_large_qh0zwf.png",
+      file: "https://res.cloudinary.com/beeyou/image/upload/v1644509302/beecase/beecase_6ae43e6632cb4ce18d0972c782f7edd5_large_jppemg.png",
       link: "/collections/op-lung",
     },
     {
