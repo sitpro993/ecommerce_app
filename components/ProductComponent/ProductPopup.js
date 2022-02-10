@@ -58,7 +58,14 @@ function ProductPopup({ product, onHide, show }) {
           <div className="row">
             <div className="col-6">
               <div className="product-img">
-                <div className="main-product-img"></div>
+                <div className="main-product-img">
+                  <Image
+                    width={350}
+                    height={350}
+                    src={product.variant[indexVariant].img}
+                    alt={product.variant[indexVariant].title}
+                  />
+                </div>
                 <ul className="small-image-product">
                   {product.variant.map((item, index) => (
                     <li key={index} className="details-thumbnail-item">
@@ -77,9 +84,6 @@ function ProductPopup({ product, onHide, show }) {
             <div className="col-6">
               <div className="product-content">
                 <h4 className="p-title">{product.title}</h4>
-                <p className="product-more-info">
-                  <span className="product-sku">Mã sản phẩm:</span>
-                </p>
                 <div className="product-price">
                   <span className="p-price">
                     {product.price
