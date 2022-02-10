@@ -351,7 +351,7 @@ function Mainmenu(props) {
       //menu4
       {
         content: "BeeCarry",
-        link: "/collections/BeeCarry",
+        link: "/collections/beecarry",
         // menuTab: [
         //   {
         //     content: "Phụ Kiện Da Thật 100%",
