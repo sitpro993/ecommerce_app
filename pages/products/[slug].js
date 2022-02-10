@@ -93,11 +93,10 @@ export default function ProductDetail({ product }) {
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   ₫
                 </span>
-                <s>149,000₫</s>
               </p>
-              <p className="infor-details">{product.description}</p>
+              <p className="infor-details">{product.shortDescription}</p>
               <div className="detail-title-infor">
-                <p>Tiêu đề</p>
+                <p>Biến thể</p>
                 <select
                   className="select-details"
                   value={indexVariant}
@@ -236,7 +235,7 @@ export default function ProductDetail({ product }) {
               class="detail-tab-panel"
               classSelected="detail-tab-panel-selected"
             >
-              <Panel title="Mô tả sản phẩm"></Panel>
+              <Panel title="Mô tả sản phẩm">{product.description}</Panel>
               <Panel title="Bình luận"></Panel>
             </Tabs>
           </div>

@@ -34,7 +34,10 @@ export default function ProductAccordion() {
                       <div className="sidebar-product-content">
                         <p>{product.title}</p>
                         <span className="sidebar-product-price">
-                          {product.price}
+                          {product.price
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                          ₫
                         </span>
                       </div>
                     </a>

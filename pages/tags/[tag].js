@@ -16,13 +16,36 @@ import ProductAccordion from "../../components/ProductComponent/ProductAccordion
 
 function CollectionPage(props) {
   const [filter, setFilter] = useState("title-ascending");
-
+  const [isLoading, setLoading] = useState(false); //State for the loading indicator
+  const startLoading = () => setLoading(true);
+  const stopLoading = () => setLoading(false);
   const router = useRouter();
+  /*
+    			Posts fetching happens after page navigation,
+    			so we need to switch Loading state on Router events.
+    		*/
+  useEffect(() => {
+    //After the component is mounted set router event handlers
+    Router.events.on("routeChangeStart", startLoading);
+    Router.events.on("routeChangeComplete", stopLoading);
+
+    return () => {
+      Router.events.off("routeChangeStart", startLoading);
+      Router.events.off("routeChangeComplete", stopLoading);
+    };
+  }, []);
+
+  const pagginationHandler = (page) => {
+    if (page.selected >= 0) {
+      filterSearch({ router, page: page.selected + 1 });
+    }
+  };
+
   const handleChangeFilter = (e) => {
     setFilter(e.target.value);
     filterSearch({ router, sort_by: e.target.value });
   };
-  return (
+  return props.collection ? (
     <>
       <Head>
         <title>{props.collection.title + " - BeeYou"}</title>
@@ -73,29 +96,66 @@ function CollectionPage(props) {
                   </Form.Select>
                 </Form.Group>
 
-                <ProductList products={props.products}></ProductList>
+                {isLoading ? (
+                  <Loading />
+                ) : (
+                  <ProductList
+                    products={props.collection.product}
+                  ></ProductList>
+                )}
+              </div>
+              <div className="my-pagination">
+                <ReactPaginate
+                  containerClassName={"pagination justify-content-center"}
+                  previousLabel={"<<"}
+                  previousClassName={"page-item"}
+                  previousLinkClassName={"page-link"}
+                  nextLabel={">>"}
+                  nextClassName={"page-item"}
+                  nextLinkClassName={"page-link"}
+                  breakLabel={"..."}
+                  breakClassName={"page-item"}
+                  breakLinkClassName={"page-link"}
+                  pageClassName={"page-item"}
+                  pageLinkClassName={"page-link"}
+                  activeClassName={"active"}
+                  initialPage={props.currentPage - 1}
+                  pageCount={props.pageCount}
+                  marginPagesDisplayed={6}
+                  pageRangeDisplayed={3}
+                  onPageChange={pagginationHandler}
+                />
               </div>
             </Col>
           </Row>
         </div>
       </section>
     </>
-  );
+  ) : null;
 }
 export default CollectionPage;
 
 export const getServerSideProps = async ({ params, query }) => {
+  const page = query.page || 1;
   const sort_by = query.sort_by || "title-ascending";
 
-  const res = await getData(`collections/${params.slug}?sort_by=${sort_by}`);
+  const res = await getData(
+    `tags/${params.slug}?page=${page}&sort_by=${sort_by}`
+  );
+  // const data = await res.json();
 
-  if (res.err) {
+  if (!res.category) {
     return {
       notFound: true,
     };
   }
-
+  //Math.ceil(res.category.totalProduct)
   return {
-    props: { collection: res.category, products: res.products },
+    props: {
+      res,
+      collection: res.category,
+      page: res.page,
+      pageCount: 2,
+    },
   };
 };

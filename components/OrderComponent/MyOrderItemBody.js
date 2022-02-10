@@ -40,7 +40,7 @@ function MyOrderItemBody({ order }) {
               </td>
               <td>{product.variant[product.indexVariant].title}</td>
               <td>{product.size[product.indexSize]}</td>
-              <td>{product.description}</td>
+              <td>{product.shortDescription}</td>
               <td>{product.quantity}</td>
               <td>{product.price}</td>
               <td>{product.price * product.quantity}</td>
