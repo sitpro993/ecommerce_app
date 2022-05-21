@@ -1,8 +1,15 @@
 .wrapper {
-    max-width: 1240px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 30px;
-    height: fit-content;
+}
+@media only screen and (min-width: 1400px) {
+    .wrapper {
+        max-width: 1240px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
 }
 
 //Home style reused

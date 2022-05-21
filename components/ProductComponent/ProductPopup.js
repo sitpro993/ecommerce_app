@@ -36,6 +36,10 @@ function ProductPopup({ product, onHide, show }) {
     });
     onHide();
   };
+
+
+
+
   return (
     <>
       <Modal
